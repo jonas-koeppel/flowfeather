@@ -78,7 +78,7 @@ Imported data is processed in the browser. Feather Flow does not upload samples 
 The app is currently implemented as a static single-page app:
 
 - `index.html` contains the UI, plotting, parsers, gates, and export logic.
-- `feather-icon2.svg` is the active favicon and header logo source.
+- `feather-icon.svg` is the active favicon; the header uses the matching inline product mark.
 - `example_data/` contains bundled example FCS files.
 
 Because there is no build step, refreshing the browser is enough after editing `index.html`.
