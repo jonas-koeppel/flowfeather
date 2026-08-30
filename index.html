@@ -21,6 +21,7 @@
       --canvas-bg: #fdfdfd; --axis-stroke: #dee2e6; --tick-stroke: #ced4da; --gate-stroke: #343a40; --gate-fill: rgba(13, 110, 253, 0.0);
     }
     *{box-sizing:border-box}
+    [hidden]{display:none!important}
     html,body{height:100%; transition: background-color 0.3s, color 0.3s;}
     body{margin:0;background:var(--bg);color:var(--text);font-family:var(--ui-font);font-size:14px;font-weight:400;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     .app{display:grid;grid-template-columns:292px minmax(0, 1fr) 308px;grid-template-rows:auto 1fr;gap:12px;padding:14px;max-width:1580px;margin:0 auto}
@@ -63,13 +64,15 @@
     input[type="number"]{appearance:textfield;-moz-appearance:textfield}
     
     .files{display:flex;flex-direction:column;gap:1px}
-    .files.is-drop-target, .emptyState.is-drop-target{outline:2px solid color-mix(in srgb, var(--accent) 55%, transparent);outline-offset:3px;background:var(--hover-bg)}
+    .files.is-drop-target, .emptyState.is-drop-target{outline:2px solid var(--gate-selection, var(--muted));outline-offset:3px;background:var(--hover-bg)}
     .fileRow{display:flex;align-items:center;gap:7px;padding:2px 5px;border-radius:6px; cursor: grab;}
     .fileRow:hover{background:var(--hover-bg)}
     .fileRow.dragging { opacity: 0.5; }
     .legendDot{width:12px;height:12px;min-width:12px;flex:0 0 12px;border-radius:50%; cursor:pointer; border: 2px solid transparent;}
     .legendDot:hover{border-color: var(--accent);}
     .fileName{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .fileNameInput{flex:1;min-width:0;height:26px!important;padding:0 3px!important;border:1px solid transparent!important;border-radius:6px!important;background:transparent!important;color:var(--text)!important;font:inherit;text-overflow:ellipsis;cursor:text}
+    .fileNameInput:focus{border-color:var(--border-color)!important;background:var(--input-bg)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--gate-selection, var(--muted)) 15%,transparent)!important}
     
     .ctrlRow{display:grid;grid-template-columns:1fr 1fr; gap:8px}
     .rangeRow{display:grid;grid-template-columns:1fr 1fr 32px;gap:8px;align-items:end}
@@ -152,6 +155,11 @@
     .styleToggle{display:flex;align-items:center;gap:8px;margin-top:12px}
     .styleToggle label{margin:0;color:var(--text);font-size:12px;font-weight:500;text-transform:none;letter-spacing:0}
     .styleSelect{margin-top:8px}
+    .segmentedControl{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:6px;padding:3px;border-radius:10px;background:var(--input-bg)}
+    .segmentedControl button{height:32px;padding:0 9px;border:0;border-radius:7px;background:transparent;color:var(--muted);font-size:11.5px}
+    .segmentedControl button.is-active{background:var(--panel);color:var(--text);box-shadow:0 1px 4px rgba(24,31,42,.10)}
+    body[data-theme="dark"] .segmentedControl button.is-active{background:var(--hover-bg);box-shadow:none}
+    .axisModeHint{margin:9px 2px 1px;color:var(--muted);font-size:10.5px;line-height:1.45}
     .fileDelete{margin-left:5px;width:22px;height:22px;padding:0;border-color:transparent;background:transparent;color:var(--muted);font-size:12px;box-shadow:none}
     .fileDelete:hover{border-color:transparent;background:transparent;color:var(--bad)}
     .gateDelete{margin-left:auto;width:22px;height:22px;padding:0;border-color:transparent;background:transparent;color:var(--muted);font-size:12px;box-shadow:none}
@@ -264,15 +272,17 @@
     .sep{margin:16px 0;background:var(--border-color)}
     .files{gap:2px}.fileRow{min-height:34px;padding:5px 6px;border-radius:8px;cursor:grab;transition:background .16s}
     .fileRow:hover{background:var(--hover-bg)}.fileRow input[type="checkbox"]{accent-color:#202020}
-    .legendDot{width:9px;height:9px;min-width:9px;flex-basis:9px;border-width:1px}.fileName{font-size:12px;font-weight:520}
+    .legendDot{width:9px;height:9px;min-width:9px;flex-basis:9px;border-width:1px}.fileName,.fileNameInput{font-size:12px;font-weight:520}.fileNameInput{width:0!important}
     .hint{font-size:10.5px}.emptyState{padding:12px;border:0;border-radius:11px;background:var(--input-bg);line-height:1.5}.emptyStateAction{height:29px;margin-top:9px;background:var(--panel)}
     .swapRow{gap:6px}.swapRow>div,.gateItem,.brandCopy,.rangeRow>div{min-width:0}.ctrlRow{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.rangeRow{grid-template-columns:minmax(0,1fr) 34px;gap:7px}.rangeField{font-variant-numeric:tabular-nums}.magicAuto{width:34px;height:37px}.gateName{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
     #resetView{margin-top:7px;color:var(--text);font-weight:590}
     .plotWrap{position:relative;width:100%;max-width:900px;margin:0 auto;border:1px solid var(--border-color);border-radius:18px;background:var(--canvas-bg);box-shadow:0 10px 32px rgba(25,25,22,.045);overflow:hidden}
     body[data-theme="dark"] .plotWrap{box-shadow:0 12px 34px rgba(0,0,0,.22)}canvas{width:100%;height:auto;border-radius:17px}.axisLabel{z-index:3;font-size:13px;font-weight:620;letter-spacing:-.01em}.axisLabel.x{bottom:2px}.axisLabel.y{left:8px}
-    .canvasWelcome{position:absolute;z-index:4;inset:0;display:grid;place-items:center;padding:32px;text-align:center;background:var(--input-bg);transition:opacity .22s,visibility .22s}
+    .canvasWelcome{position:absolute;z-index:4;inset:0;display:grid;place-items:center;padding:32px;text-align:center;background:var(--input-bg);transition:opacity .22s,visibility .22s,background .18s,box-shadow .18s}
+    .canvasWelcome.is-drop-target{background:var(--hover-bg);box-shadow:inset 0 0 0 2px var(--gate-selection)}
+    .canvasWelcome.is-drop-target .welcomeGlyph{transform:translateY(-2px) scale(1.035)}
     body.has-data .canvasWelcome{opacity:0;visibility:hidden;pointer-events:none}.welcomeContent{max-width:340px;display:flex;flex-direction:column;align-items:center}
-    .welcomeGlyph{width:58px;height:58px;margin-bottom:17px;border-radius:17px;display:grid;place-items:center;color:#fff;background:#171717;box-shadow:0 12px 26px rgba(0,0,0,.14)}
+    .welcomeGlyph{width:58px;height:58px;margin-bottom:17px;border-radius:17px;display:grid;place-items:center;color:#fff;background:#171717;box-shadow:0 12px 26px rgba(0,0,0,.14);transition:transform .18s}
     body[data-theme="dark"] .welcomeGlyph{color:#171717;background:#f4f4f1}.welcomeGlyph svg{width:31px;height:31px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
     .canvasWelcome h2{margin:0;font-size:23px;line-height:1.12;font-weight:680;letter-spacing:-.04em}.canvasWelcome p{max-width:300px;margin:9px 0 17px;color:var(--muted);font-size:12.5px;line-height:1.55}
     .canvasAction{display:inline-flex;align-items:center;justify-content:center;height:37px;margin:0;padding:0 15px;border-radius:10px;background:var(--text);color:var(--panel);font-size:12px;font-weight:620;text-transform:none;letter-spacing:0;cursor:pointer;box-shadow:0 6px 15px rgba(0,0,0,.13);transition:transform .18s,box-shadow .18s}
@@ -527,7 +537,7 @@
     <section class="col mid">
       <div class="plotWrap">
         <canvas id="plot" width="900" height="600"></canvas>
-        <div class="canvasWelcome">
+        <div class="canvasWelcome" id="canvasWelcome">
           <div class="welcomeContent">
             <div class="welcomeGlyph"><svg viewBox="0 0 40 40"><path d="M7 31c5-10 12-18 25-24-1 12-7 21-17 24-3 1-5 1-8 0Z"/><path d="M6 34c7-11 15-20 26-27"/><path d="M17 23h9M22 17h7"/></svg></div>
             <h2>Your analysis starts here</h2>
@@ -587,26 +597,36 @@
       <strong id="axisPopoverTitle">Axis</strong>
       <button id="axisPopoverClose" class="borderless icon-only" type="button" aria-label="Close">✕</button>
     </div>
-    <label>Parameter</label>
-    <select id="axisPopoverParam"></select>
-    <div class="miniGrid">
-      <div>
-        <label>Scale</label>
-        <select id="axisPopoverScale"><option value="linear">Linear</option><option value="log">Exponential</option></select>
+    <div id="axisStandardControls">
+      <label>Parameter</label>
+      <select id="axisPopoverParam"></select>
+      <div class="miniGrid">
+        <div>
+          <label>Scale</label>
+          <select id="axisPopoverScale"><option value="linear">Linear</option><option value="log">Exponential</option></select>
+        </div>
+        <div></div>
+        <div>
+          <label>Min</label>
+          <input id="axisPopoverMin" type="number" step="any" />
+        </div>
+        <div>
+          <label>Max</label>
+          <input id="axisPopoverMax" type="number" step="any" />
+        </div>
       </div>
-      <div></div>
-      <div>
-        <label>Min</label>
-        <input id="axisPopoverMin" type="number" step="any" />
-      </div>
-      <div>
-        <label>Max</label>
-        <input id="axisPopoverMax" type="number" step="any" />
+      <div class="modal-footer">
+        <button id="axisPopoverAuto" class="secondary" type="button">Auto</button>
+        <button id="axisPopoverApply" type="button">Apply</button>
       </div>
     </div>
-    <div class="modal-footer">
-      <button id="axisPopoverAuto" class="secondary" type="button">Auto</button>
-      <button id="axisPopoverApply" type="button">Apply</button>
+    <div id="histYModeControls" hidden>
+      <label>Normalization</label>
+      <div class="segmentedControl" role="group" aria-label="Histogram Y-axis normalization">
+        <button type="button" data-hist-y-mode="percent" aria-pressed="true">Percent of max</button>
+        <button type="button" data-hist-y-mode="count" aria-pressed="false">Count</button>
+      </div>
+      <p class="axisModeHint" id="histYModeHint">Each sample is scaled to its own peak.</p>
     </div>
   </div>
 
@@ -623,7 +643,7 @@ const ui = {
   xScale: byId('xScale'), yScale: byId('yScale'), xRange: byId('xRange'), yRange: byId('yRange'), xMin: byId('xMin'), xMax: byId('xMax'), yMin: byId('yMin'), yMax: byId('yMax'),
   autoX: byId('autoX'), autoY: byId('autoY'), swapAxes: byId('swapAxes'),
   resetView: byId('resetView'),
-  plot: byId('plot'), xlabel: byId('xlabel'), ylabel: byId('ylabel'), cursorCoords: byId('cursorCoords'),
+  plot: byId('plot'), canvasWelcome: byId('canvasWelcome'), xlabel: byId('xlabel'), ylabel: byId('ylabel'), cursorCoords: byId('cursorCoords'),
   gateTree: byId('gateTree'), statsBox: byId('statsBox'),
   filesEmptyState: byId('filesEmptyState'), loadExampleData: byId('loadExampleData'), gatesEmptyState: byId('gatesEmptyState'),
   workspaceMenuButton: byId('workspaceMenuButton'), workspaceMenu: byId('workspaceMenu'),
@@ -640,6 +660,7 @@ const ui = {
   statsSelectAll: byId('statsSelectAll'), statsSelectNone: byId('statsSelectNone'), cancelStatsExport: byId('cancelStatsExport'), confirmStatsExport: byId('confirmStatsExport'),
   gateApplyMenu: byId('gateApplyMenu'),
   axisPopover: byId('axisPopover'), axisPopoverTitle: byId('axisPopoverTitle'), axisPopoverClose: byId('axisPopoverClose'),
+  axisStandardControls: byId('axisStandardControls'), histYModeControls: byId('histYModeControls'), histYModeHint: byId('histYModeHint'),
   axisPopoverParam: byId('axisPopoverParam'), axisPopoverScale: byId('axisPopoverScale'), axisPopoverMin: byId('axisPopoverMin'), axisPopoverMax: byId('axisPopoverMax'),
   axisPopoverAuto: byId('axisPopoverAuto'), axisPopoverApply: byId('axisPopoverApply'),
   plotStyleMenu: byId('plotStyleMenu'), plotStyleTitle: byId('plotStyleTitle'), plotStyleClose: byId('plotStyleClose'), plotStyleReset: byId('plotStyleReset'),
@@ -672,7 +693,7 @@ let labelDragSampleId = null;
 let gateDragState = null;
 let activeAxisPopover = null;
 let activePlotStyleMode = null;
-let plotStyle = { scatterDotSize: 1.5, scatterOpacity: 0.65, histLineWidth: 1.5, histFillOpacity: null, scatterGridPseudocolor: false, scatterGridPalette: 'viridis' };
+let plotStyle = { scatterDotSize: 1.5, scatterOpacity: 0.65, histLineWidth: 1.5, histFillOpacity: null, histogramYMode: 'percent', scatterGridPseudocolor: false, scatterGridPalette: 'viridis' };
 const EXAMPLE_DATA_FILES = [
     'example_data/03-Well-B1.fcs',
     'example_data/03-Well-B2.fcs',
@@ -835,23 +856,38 @@ function refreshFileList(){
       ui.colorPicker.click();
     });
 
-    const name = document.createElement('span');
-    name.textContent = s.name;
-    name.className = 'fileName';
-    name.contentEditable = true;
-    name.style.cursor = 'text';
-    
-    // Feature: Sample renaming on the fly without drag interference
-    name.addEventListener('mousedown', (e) => e.stopPropagation()); 
-    const updateName = () => {
-        const sample = samples.find(samp => samp.id === s.id);
-        if (sample && sample.name !== name.textContent.trim()) {
-            sample.name = name.textContent.trim();
-            render();
-        }
+    const name = document.createElement('input');
+    name.type = 'text';
+    name.value = s.name;
+    name.className = 'fileNameInput';
+    name.setAttribute('aria-label', `Rename ${s.name}`);
+    let nameBeforeEdit = s.name;
+
+    // Use a real text field so selection, Delete/Backspace, and cursor movement work normally.
+    ['pointerdown', 'mousedown', 'click', 'dblclick', 'dragstart'].forEach(type => {
+        name.addEventListener(type, (e) => e.stopPropagation());
+    });
+    name.addEventListener('focus', () => {
+        nameBeforeEdit = s.name;
+        row.draggable = false;
+        name.select();
+    });
+    const commitName = () => {
+        const nextName = name.value.trim();
+        s.name = nextName || nameBeforeEdit || 'Untitled sample';
+        name.value = s.name;
+        name.setAttribute('aria-label', `Rename ${s.name}`);
+        sw.title = `Click to change color for ${s.name}`;
+        row.draggable = true;
+        refreshPopulationOptions();
+        rebuildGateTree();
+        render();
     };
-    name.addEventListener('blur', updateName);
-    name.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); name.blur(); } });
+    name.addEventListener('blur', commitName);
+    name.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') { e.preventDefault(); name.blur(); }
+        if (e.key === 'Escape') { e.preventDefault(); name.value = nameBeforeEdit; name.blur(); }
+    });
 
     const removeBtn = document.createElement('button');
     removeBtn.innerHTML = '✕'; removeBtn.className = 'borderless icon-only fileDelete';
@@ -883,6 +919,7 @@ function dragHasFiles(e) {
 function setFileDropTarget(active) {
     ui.fileList.classList.toggle('is-drop-target', active);
     ui.filesEmptyState.classList.toggle('is-drop-target', active);
+    ui.canvasWelcome.classList.toggle('is-drop-target', active && samples.length === 0);
 }
 async function handleDroppedFiles(e) {
     const files = Array.from(e.dataTransfer?.files || []).filter(file => /\.(fcs|csv)$/i.test(file.name));
@@ -890,6 +927,7 @@ async function handleDroppedFiles(e) {
     await loadSelectedFiles(files);
 }
 ui.fileList.addEventListener('dragstart', e => {
+    if (e.target.closest('.fileNameInput')) { e.preventDefault(); return; }
     const row = e.target.closest('.fileRow');
     if (!row) return;
     draggedId = row.dataset.sampleId;
@@ -948,6 +986,29 @@ ui.filesEmptyState.addEventListener('drop', async e => {
     setFileDropTarget(false);
     await handleDroppedFiles(e);
 });
+
+ui.canvasWelcome.addEventListener('dragenter', e => {
+    if (!dragHasFiles(e) || samples.length) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    setFileDropTarget(true);
+});
+ui.canvasWelcome.addEventListener('dragover', e => {
+    if (!dragHasFiles(e) || samples.length) return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+    setFileDropTarget(true);
+});
+ui.canvasWelcome.addEventListener('dragleave', e => {
+    if (!ui.canvasWelcome.contains(e.relatedTarget)) setFileDropTarget(false);
+});
+ui.canvasWelcome.addEventListener('drop', async e => {
+    if (!dragHasFiles(e) || samples.length) return;
+    e.preventDefault();
+    setFileDropTarget(false);
+    await handleDroppedFiles(e);
+});
+window.addEventListener('dragend', () => setFileDropTarget(false));
 
 function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll('.fileRow:not(.dragging)')];
@@ -1087,9 +1148,10 @@ function updateAxisLabels(){
 
   ui.xlabel.textContent = axis.xParam || '';
     if (ui.plotType.value.startsWith('hist')) {
-      ui.ylabel.textContent = 'Percent of maximum';
-      ui.ylabel.classList.remove('is-clickable');
-      ui.ylabel.title = '';
+      ui.ylabel.textContent = histogramYAxisLabel();
+      const canChooseHistogramMode = ui.plotType.value === 'hist';
+      ui.ylabel.classList.toggle('is-clickable', canChooseHistogramMode);
+      ui.ylabel.title = canChooseHistogramMode ? 'Change histogram normalization' : '';
   } else if (isGrid) {
     ui.ylabel.style.display = 'none';
   } else {
@@ -1138,6 +1200,13 @@ function axisDomain(param, scale, percentileLow = 0.01, percentileHigh = 0.99){
   return [safeMin, safeMax];
 }
 
+function defaultScaleForParam(param) {
+  const name = String(param || '').trim().toUpperCase();
+  if (!name) return 'linear';
+  const isLinearChannel = ['FSC', 'SSC', 'TIME', 'EVENT', 'INDEX'].some(token => name.includes(token));
+  return isLinearChannel ? 'linear' : 'log';
+}
+
 function autoRangesFromData(){
   const cachedX = paramSettings[axis.xParam];
   if (cachedX) {
@@ -1145,9 +1214,7 @@ function autoRangesFromData(){
     ui.xMax.value = cachedX.max;
     ui.xScale.value = cachedX.scale;
   } else {
-    const pName = axis.xParam.toUpperCase();
-    const isLog = !pName.includes('FSC') && !pName.includes('SSC');
-    ui.xScale.value = isLog ? 'log' : 'linear';
+    ui.xScale.value = defaultScaleForParam(axis.xParam);
     const [xmin, xmax] = axisDomain(axis.xParam, ui.xScale.value);
     ui.xMin.value = xmin; ui.xMax.value = xmax;
   }
@@ -1160,9 +1227,7 @@ function autoRangesFromData(){
       ui.yMax.value = cachedY.max;
       ui.yScale.value = cachedY.scale;
     } else {
-      const pName = axis.yParam.toUpperCase();
-      const isLog = !pName.includes('FSC') && !pName.includes('SSC');
-      ui.yScale.value = isLog ? 'log' : 'linear';
+      ui.yScale.value = defaultScaleForParam(axis.yParam);
       const [ymin, ymax] = axisDomain(axis.yParam, ui.yScale.value);
       ui.yMin.value = ymin; ui.yMax.value = ymax;
     }
@@ -1561,7 +1626,7 @@ function getAxisTitleTexts() {
   const plotType = ui.plotType.value;
   const xLabel = axis.xParam || '';
   let yLabel = '';
-  if (plotType.startsWith('hist')) yLabel = 'Percent of maximum';
+  if (plotType.startsWith('hist')) yLabel = histogramYAxisLabel(plotType);
   else if (plotType.startsWith('scatter')) yLabel = axis.yParam || '';
   return { xLabel, yLabel };
 }
@@ -1600,6 +1665,12 @@ function histLineWidth() {
 function histFillOpacity(isOffset) {
   if (plotStyle.histFillOpacity == null) return isOffset ? 0.6 : 0.35;
   return clampNumber(plotStyle.histFillOpacity, 0, 1, isOffset ? 0.6 : 0.35);
+}
+function histogramYMode() {
+  return plotStyle.histogramYMode === 'count' ? 'count' : 'percent';
+}
+function histogramYAxisLabel(plotType = ui.plotType.value) {
+  return plotType === 'hist' && histogramYMode() === 'count' ? 'Count' : 'Percent of maximum';
 }
 const DENSITY_PALETTES = {
   viridis: ['#440154', '#414487', '#2a788e', '#22a884', '#7ad151', '#fde725'],
@@ -1910,17 +1981,22 @@ function drawHistPlot(targetCtx, isExport, isOffset, exportOptions, width, heigh
           const densityPoints = calculateHistogram(data, axis.xMin, axis.xMax, axis.xScale, 200);
           let maxDensity = 0;
           for(const p of densityPoints) if(p.y > maxDensity) maxDensity = p.y;
+          if (maxDensity === 0) return;
           if(maxDensity > globalMaxDensity) globalMaxDensity = maxDensity;
-          allDensityPoints.push({s, densityPoints});
+          allDensityPoints.push({s, densityPoints, maxDensity});
         });
 
-        if (globalMaxDensity === 0) return;
+        if (globalMaxDensity === 0 || allDensityPoints.length === 0) return;
+        const normalizeToPeak = histogramYMode() === 'percent';
         const ys = makeScaler(0, globalMaxDensity, 'linear', h);
 
-        allDensityPoints.forEach(({s, densityPoints}) => {
+        allDensityPoints.forEach(({s, densityPoints, maxDensity}) => {
             targetCtx.fillStyle = hexToRGBA(s.color, histFillOpacity(false));
             targetCtx.strokeStyle = s.color;
             targetCtx.lineWidth = histLineWidth();
+            const pointY = p => normalizeToPeak
+              ? y + h - (p.y / maxDensity) * h
+              : y + h - ys.fwd(p.y);
 
             targetCtx.beginPath();
             targetCtx.moveTo(x + xs.fwd(densityPoints[0].x), y + h);
@@ -1928,7 +2004,7 @@ function drawHistPlot(targetCtx, isExport, isOffset, exportOptions, width, heigh
                 targetCtx,
                 densityPoints,
                 p => x + xs.fwd(p.x),
-                p => y + h - ys.fwd(p.y)
+                pointY
             );
             targetCtx.lineTo(x + xs.fwd(densityPoints[densityPoints.length - 1].x), y + h);
             targetCtx.closePath();
@@ -1938,7 +2014,7 @@ function drawHistPlot(targetCtx, isExport, isOffset, exportOptions, width, heigh
                 targetCtx,
                 densityPoints,
                 p => x + xs.fwd(p.x),
-                p => y + h - ys.fwd(p.y)
+                pointY
             );
             targetCtx.stroke();
         });
@@ -3253,16 +3329,7 @@ ui.population.addEventListener('change', ()=>{
     rebuildGateTree();
     if (!currentPopulationId || !maybeSwitchToSscHeightAreaForGate(currentPopulationId)) render();
 });
-function openAxisPopover(axisKey, anchorEl) {
-    if (axisKey === 'y' && ui.yParam.disabled) return;
-    activeAxisPopover = axisKey;
-    fillAxisPopoverOptions();
-    const isX = axisKey === 'x';
-    ui.axisPopoverTitle.textContent = `${axisKey.toUpperCase()} axis`;
-    ui.axisPopoverParam.value = isX ? ui.xParam.value : ui.yParam.value;
-    ui.axisPopoverScale.value = isX ? ui.xScale.value : ui.yScale.value;
-    ui.axisPopoverMin.value = roundedAxisValue(isX ? ui.xMin.value : ui.yMin.value, ui.axisPopoverScale.value);
-    ui.axisPopoverMax.value = roundedAxisValue(isX ? ui.xMax.value : ui.yMax.value, ui.axisPopoverScale.value);
+function positionAxisPopover(anchorEl) {
     const rect = anchorEl.getBoundingClientRect();
     const pop = ui.axisPopover;
     pop.classList.add('open');
@@ -3275,6 +3342,38 @@ function openAxisPopover(axisKey, anchorEl) {
     const top = Math.max(8, above >= 8 ? above : below);
     pop.style.left = `${left}px`;
     pop.style.top = `${top}px`;
+}
+function syncHistogramYModeControls() {
+    const mode = histogramYMode();
+    ui.histYModeControls.querySelectorAll('[data-hist-y-mode]').forEach(button => {
+        const active = button.dataset.histYMode === mode;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+    });
+    ui.histYModeHint.textContent = mode === 'percent'
+      ? 'Each sample is scaled to its own peak.'
+      : 'Peak height reflects the number of events.';
+}
+function openAxisPopover(axisKey, anchorEl) {
+    const isHistogramY = axisKey === 'y' && ui.plotType.value === 'hist';
+    if (axisKey === 'y' && ui.yParam.disabled && !isHistogramY) return;
+    activeAxisPopover = isHistogramY ? 'hist-y' : axisKey;
+    ui.axisStandardControls.hidden = isHistogramY;
+    ui.histYModeControls.hidden = !isHistogramY;
+    if (isHistogramY) {
+        ui.axisPopoverTitle.textContent = 'Histogram Y axis';
+        syncHistogramYModeControls();
+        positionAxisPopover(anchorEl);
+        return;
+    }
+    fillAxisPopoverOptions();
+    const isX = axisKey === 'x';
+    ui.axisPopoverTitle.textContent = `${axisKey.toUpperCase()} axis`;
+    ui.axisPopoverParam.value = isX ? ui.xParam.value : ui.yParam.value;
+    ui.axisPopoverScale.value = isX ? ui.xScale.value : ui.yScale.value;
+    ui.axisPopoverMin.value = roundedAxisValue(isX ? ui.xMin.value : ui.yMin.value, ui.axisPopoverScale.value);
+    ui.axisPopoverMax.value = roundedAxisValue(isX ? ui.xMax.value : ui.yMax.value, ui.axisPopoverScale.value);
+    positionAxisPopover(anchorEl);
 }
 function closeAxisPopover() {
     activeAxisPopover = null;
@@ -3365,7 +3464,7 @@ function openPlotStyleMenu(mode, clientX, clientY) {
     pop.style.top = `${top}px`;
 }
 function applyAxisPopover(auto = false) {
-    if (!activeAxisPopover) return;
+    if (activeAxisPopover !== 'x' && activeAxisPopover !== 'y') return;
     const isX = activeAxisPopover === 'x';
     const paramSel = isX ? ui.xParam : ui.yParam;
     const scaleSel = isX ? ui.xScale : ui.yScale;
@@ -3396,13 +3495,24 @@ ui.axisPopoverClose.addEventListener('click', closeAxisPopover);
 ui.axisPopoverApply.addEventListener('click', () => applyAxisPopover(false));
 ui.axisPopoverAuto.addEventListener('click', () => applyAxisPopover(true));
 function previewAxisPopoverAutoRange() {
-    if (!activeAxisPopover) return;
+    if (activeAxisPopover !== 'x' && activeAxisPopover !== 'y') return;
     const [min, max] = axisDomain(ui.axisPopoverParam.value, ui.axisPopoverScale.value);
     ui.axisPopoverMin.value = roundedAxisValue(min, ui.axisPopoverScale.value);
     ui.axisPopoverMax.value = roundedAxisValue(max, ui.axisPopoverScale.value);
 }
-ui.axisPopoverParam.addEventListener('change', previewAxisPopoverAutoRange);
+ui.axisPopoverParam.addEventListener('change', () => {
+    ui.axisPopoverScale.value = defaultScaleForParam(ui.axisPopoverParam.value);
+    previewAxisPopoverAutoRange();
+});
 ui.axisPopoverScale.addEventListener('change', previewAxisPopoverAutoRange);
+ui.histYModeControls.addEventListener('click', (e) => {
+    const button = e.target.closest('[data-hist-y-mode]');
+    if (!button) return;
+    plotStyle.histogramYMode = button.dataset.histYMode === 'count' ? 'count' : 'percent';
+    syncHistogramYModeControls();
+    updateAxisLabels();
+    render();
+});
 document.addEventListener('click', (e) => {
     if (!ui.axisPopover.classList.contains('open')) return;
     if (ui.axisPopover.contains(e.target) || e.target === ui.xlabel || e.target === ui.ylabel) return;
@@ -3534,13 +3644,13 @@ ui.confirmPdfExport.addEventListener('click', safeHandler('PDF export', () => {
 }));
 
 function pdfAxisLabelKey() {
-    return `${ui.plotType.value}|${axis.xParam || ''}|${axis.yParam || ''}`;
+    return `${ui.plotType.value}|${axis.xParam || ''}|${axis.yParam || ''}|${histogramYMode()}`;
 }
 function defaultPdfLabels() {
     const plotType = ui.plotType.value;
     return {
       x: axis.xParam || '',
-      y: plotType.startsWith('hist') ? 'Percent of maximum' : (plotType.startsWith('scatter') ? (axis.yParam || '') : '')
+      y: plotType.startsWith('hist') ? histogramYAxisLabel(plotType) : (plotType.startsWith('scatter') ? (axis.yParam || '') : '')
     };
 }
 function pdfThemeColor(role, isLightMode) {
@@ -3849,16 +3959,17 @@ function drawAllHistPlotPDF(pdf, area, isLightMode, isOffset, options) {
             pdf.lineTo(startPoint[0], startPoint[1]); 
             pdf.fill();
             pdf.setGState(new pdf.GState({opacity: 1.0}));
-            const axisColor = pdfThemeColor('axis', isLightMode);
-            pdf.setDrawColor(axisColor.r, axisColor.g, axisColor.b);
-            pdf.setLineWidth(1);
-            pdf.line(x, baselineY, x + w, baselineY);
             pdf.setDrawColor(color.r, color.g, color.b);
             pdf.setLineWidth(histLineWidth());
             pdf.moveTo(x + xs.fwd(densityPoints[0].x), baselineY - (densityPoints[0].y / maxDensity) * sampleHeight * 0.8);
             densityPoints.slice(1).forEach(p => pdf.lineTo(x + xs.fwd(p.x), baselineY - (p.y / maxDensity) * sampleHeight * 0.8));
             pdf.stroke();
             pdf.setGState(new pdf.GState({opacity: 1.0}));
+            // Finish with the panel baseline so histogram strokes never cover the PDF frame.
+            const axisColor = pdfThemeColor('axis', isLightMode);
+            pdf.setDrawColor(axisColor.r, axisColor.g, axisColor.b);
+            pdf.setLineWidth(1);
+            pdf.line(x, baselineY, x + w, baselineY);
 
             if (options.showSampleNames) {
                 const textColor = pdfThemeColor('text', isLightMode);
@@ -3877,26 +3988,32 @@ function drawAllHistPlotPDF(pdf, area, isLightMode, isOffset, options) {
             const data = s.data[i].filter((_, k) => popFilter(s, k));
             if (data.length === 0) return;
             const densityPoints = calculateHistogram(data, axis.xMin, axis.xMax, axis.xScale, 200);
-            globalMaxDensity = Math.max(globalMaxDensity, ...densityPoints.map(p=>p.y));
-            allDensityPoints.push({s, densityPoints});
+            const maxDensity = Math.max(...densityPoints.map(p=>p.y));
+            if (maxDensity === 0) return;
+            globalMaxDensity = Math.max(globalMaxDensity, maxDensity);
+            allDensityPoints.push({s, densityPoints, maxDensity});
         });
-        if (globalMaxDensity === 0) return;
+        if (globalMaxDensity === 0 || allDensityPoints.length === 0) return;
+        const normalizeToPeak = histogramYMode() === 'percent';
         const ys = makeScaler(0, globalMaxDensity, 'linear', h);
-        allDensityPoints.forEach(({s, densityPoints}) => {
+        allDensityPoints.forEach(({s, densityPoints, maxDensity}) => {
             const color = hexToRgb(s.color);
             pdf.setFillColor(color.r, color.g, color.b); pdf.setDrawColor(color.r, color.g, color.b);
             pdf.setGState(new pdf.GState({opacity: histFillOpacity(false)})); pdf.setLineWidth(histLineWidth());
+            const pointY = p => normalizeToPeak
+              ? y + h - (p.y / maxDensity) * h
+              : y + h - ys.fwd(p.y);
             const startPoint = [x + xs.fwd(densityPoints[0].x), y + h];
             pdf.moveTo(startPoint[0], startPoint[1]);
-            densityPoints.forEach(p => pdf.lineTo(x + xs.fwd(p.x), y + h - ys.fwd(p.y)));
+            densityPoints.forEach(p => pdf.lineTo(x + xs.fwd(p.x), pointY(p)));
             pdf.lineTo(x + xs.fwd(densityPoints[densityPoints.length - 1].x), y + h);
             pdf.lineTo(startPoint[0], startPoint[1]); 
             pdf.fill();
             pdf.setGState(new pdf.GState({opacity: 1.0}));
             pdf.setDrawColor(color.r, color.g, color.b);
             pdf.setLineWidth(histLineWidth());
-            pdf.moveTo(x + xs.fwd(densityPoints[0].x), y + h - ys.fwd(densityPoints[0].y));
-            densityPoints.slice(1).forEach(p => pdf.lineTo(x + xs.fwd(p.x), y + h - ys.fwd(p.y)));
+            pdf.moveTo(x + xs.fwd(densityPoints[0].x), pointY(densityPoints[0]));
+            densityPoints.slice(1).forEach(p => pdf.lineTo(x + xs.fwd(p.x), pointY(p)));
             pdf.stroke();
             pdf.setGState(new pdf.GState({opacity: 1.0}));
         });

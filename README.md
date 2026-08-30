@@ -4,8 +4,8 @@ Feather Flow is a lightweight browser app for exploring flow cytometry data. It 
 
 ## Features
 
-- Import `.fcs` and `.csv` files, including drag-and-drop loading into the Files panel.
-- View samples as scatter overlays, scatter grids, histogram overlays, and histogram offsets.
+- Import `.fcs` and `.csv` files, including drag-and-drop loading into the empty plot workspace or Files panel.
+- View samples as scatter overlays, scatter grids, histogram overlays, and histogram offsets, with overlay histograms normalized by peak or shown as event counts.
 - Draw rectangle, ellipse, polygon, and histogram segment gates.
 - Build hierarchical populations, including sample-specific gates and apply-to-sample or apply-to-all workflows.
 - Move and edit gates, labels, axes, sample colors, and grid column layout interactively.
