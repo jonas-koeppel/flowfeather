@@ -292,6 +292,43 @@
     .right .gateTools{width:100%;justify-content:space-between;padding:4px;border:0;border-radius:11px;background:var(--input-bg);box-shadow:none}.gateToolButton{flex:1;width:auto;height:38px;border-radius:8px}.gateToolButton.is-active{color:var(--text);background:#dfe3e8;box-shadow:0 1px 4px rgba(24,31,42,.09)}body[data-theme="dark"] .gateToolButton.is-active{color:var(--text);background:#353b44;box-shadow:none}.gateToolButton:hover{transform:none}.gateToolButton:focus-visible{outline:2px solid color-mix(in srgb,var(--gate-selection) 55%,transparent);outline-offset:2px}.gateItem.is-current{background:var(--hover-bg);box-shadow:inset 0 0 0 1px var(--border-color)}
     .workspaceMenu,.exportMenu,.contextMenu{border-radius:13px;box-shadow:var(--shadow-float)}.axisPopover{position:fixed;width:min(280px,calc(100vw - 16px));min-width:0;max-width:calc(100vw - 16px)}.axisPopover .miniGrid>div{min-width:0}.plotStylePopover{width:min(300px,calc(100vw - 16px))}
     .modal-overlay{padding:16px;background:rgba(12,12,11,.38);backdrop-filter:blur(8px)}.modal-content{width:min(480px,100%);min-width:0;max-height:calc(100dvh - 32px);overflow:auto;padding:22px;border-radius:18px;box-shadow:var(--shadow-float)}.stats-export-modal{width:min(760px,100%)}
+    .compensationEntry{width:100%;height:43px;margin-top:10px;padding:0 9px;border:0;border-radius:9px;background:transparent;justify-content:flex-start;gap:9px;text-align:left}
+    .compensationEntry:hover{background:var(--hover-bg)}
+    .compensationEntry svg{width:18px;height:18px;stroke:var(--muted);fill:none;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+    .compensationEntryCopy{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;flex:1}
+    .compensationEntryCopy strong{font-size:12.5px;font-weight:590;color:var(--text)}
+    .compensationStatus{max-width:116px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:10.5px;font-weight:540}
+    .compensationStatus.is-active{color:var(--accent)}
+    .compensationChevron{color:var(--muted);font-size:16px;line-height:1}
+    .compensation-modal{width:min(920px,100%)}
+    .compensationHead{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+    .compensationHead h4{margin-bottom:5px}
+    .compensationIntro{max-width:630px;margin:0;color:var(--muted);font-size:12px;line-height:1.5}
+    .compensationToggle{display:flex;align-items:center;gap:8px;flex:0 0 auto;margin:2px 0 0;color:var(--text);font-size:12px;font-weight:570;text-transform:none;letter-spacing:0}
+    .compensationToggle input{margin:0;accent-color:var(--accent)}
+    .compensationSectionHead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-top:18px}
+    .compensationSectionHead label{margin:0}
+    .compensationMiniActions{display:flex;gap:3px}
+    .compensationMiniActions button{height:27px;padding:0 8px;color:var(--muted);font-size:10.5px}
+    .compensationChannels{display:flex;flex-wrap:wrap;gap:5px;max-height:106px;overflow:auto;margin-top:7px;padding:2px}
+    .compensationChannel{display:inline-flex;align-items:center;gap:6px;height:29px;margin:0;padding:0 9px;border:1px solid var(--border-color);border-radius:8px;background:var(--input-bg);color:var(--text);font-size:11px;font-weight:510;text-transform:none;letter-spacing:0;cursor:pointer}
+    .compensationChannel input{margin:0;accent-color:var(--accent)}
+    .compensationEmpty{margin:12px 0;padding:14px;border-radius:9px;background:var(--input-bg);color:var(--muted);font-size:12px;line-height:1.45}
+    .compensationMatrixWrap{max-height:360px;overflow:auto;margin-top:8px;border:1px solid var(--border-color);border-radius:10px;background:var(--panel)}
+    .compensationMatrix{width:max-content;min-width:100%;border-collapse:separate;border-spacing:0;font-size:11px;font-variant-numeric:tabular-nums}
+    .compensationMatrix th,.compensationMatrix td{min-width:76px;padding:5px;border-right:1px solid var(--border-color);border-bottom:1px solid var(--border-color);text-align:center}
+    .compensationMatrix tr:last-child th,.compensationMatrix tr:last-child td{border-bottom:0}
+    .compensationMatrix th:last-child,.compensationMatrix td:last-child{border-right:0}
+    .compensationMatrix th{position:sticky;top:0;z-index:2;background:var(--input-bg);color:var(--muted);font-weight:620;white-space:nowrap}
+    .compensationMatrix th:first-child{left:0;z-index:3;min-width:104px;text-align:left}
+    .compensationMatrix tbody th{top:auto;left:0;z-index:1;text-align:left;color:var(--text)}
+    .compensationMatrix input{width:66px;height:29px;padding:4px 6px;text-align:right;font-size:11px}
+    .compensationMatrix .compensationDiagonal{display:inline-flex;align-items:center;justify-content:flex-end;width:66px;height:29px;padding:0 7px;color:var(--muted)}
+    .compensationMatrixTitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px}
+    .compensationMatrixTitle label{margin:0}
+    .compensationMatrixTitle span{color:var(--muted);font-size:10.5px}
+    .compensationFeedback{min-height:18px;margin:10px 2px 0;color:var(--muted);font-size:11px}
+    .compensationFeedback.is-error{color:var(--bad)}
     @media(max-width:1240px){
       body{padding:0 16px}.app{grid-template-columns:280px minmax(0,1fr);margin:16px auto;min-height:calc(100dvh - 32px)}header{grid-column:1/3}.right{grid-column:1/3;display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);gap:10px 24px;border-left:0;border-top:1px solid var(--border-color)}.right>h3:first-of-type{grid-column:1;grid-row:1}.right>.stats{grid-column:1;grid-row:2/5}.right>.sep{display:none}.right>h3:nth-of-type(2){grid-column:2;grid-row:1}.right>.gateTools{grid-column:2;grid-row:2;max-width:340px}.right>label{grid-column:2;grid-row:3;margin-top:0}.right>.tree,.right>#gatesEmptyState{grid-column:2;grid-row:4}
     }
@@ -374,6 +411,39 @@
         <button id="statsSelectNone" class="secondary" type="button">Unselect all</button>
         <button id="cancelStatsExport" class="secondary">Cancel</button>
         <button id="confirmStatsExport">Export</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="compensationModal">
+    <div class="modal-content compensation-modal" role="dialog" aria-modal="true" aria-labelledby="compensationTitle">
+      <div class="compensationHead">
+        <div>
+          <h4 id="compensationTitle">Compensation</h4>
+          <p class="compensationIntro">Correct fluorescence spillover with a manual matrix. Values show the percent of the row channel measured in the column detector.</p>
+        </div>
+        <label class="compensationToggle" for="compensationEnabled">
+          <input id="compensationEnabled" type="checkbox" /> Enabled
+        </label>
+      </div>
+      <div class="compensationSectionHead">
+        <label>Channels</label>
+        <div class="compensationMiniActions">
+          <button id="compensationSelectFluorescence" class="borderless" type="button">Select fluorescence</button>
+          <button id="compensationClearChannels" class="borderless" type="button">Clear</button>
+        </div>
+      </div>
+      <div id="compensationChannels" class="compensationChannels"></div>
+      <div class="compensationMatrixTitle">
+        <label>Spillover matrix (%)</label>
+        <span>Rows: source &nbsp; Columns: detector</span>
+      </div>
+      <div id="compensationMatrixWrap" class="compensationMatrixWrap"></div>
+      <div id="compensationFeedback" class="compensationFeedback" role="status"></div>
+      <div class="modal-footer">
+        <button id="compensationResetMatrix" class="secondary" type="button">Clear matrix</button>
+        <button id="compensationCancel" class="secondary" type="button">Cancel</button>
+        <button id="compensationApply" type="button">Apply</button>
       </div>
     </div>
   </div>
@@ -504,6 +574,12 @@
       </select>
       <label>Population</label>
       <select id="population"></select>
+
+      <button id="compensationButton" class="compensationEntry" type="button" aria-haspopup="dialog" aria-controls="compensationModal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4zM4 9.33h16M4 14.67h16M9.33 4v16M14.67 4v16"/></svg>
+        <span class="compensationEntryCopy"><strong>Compensation</strong><span id="compensationStatus" class="compensationStatus">Off</span></span>
+        <span class="compensationChevron" aria-hidden="true">›</span>
+      </button>
 
       <div class="sep"></div>
       <h3>Axes</h3>
@@ -668,6 +744,10 @@ const ui = {
   plotStyleSecondary: byId('plotStyleSecondary'), plotStyleSecondaryLabel: byId('plotStyleSecondaryLabel'), plotStyleSecondaryValue: byId('plotStyleSecondaryValue'),
   plotStylePseudocolorRow: byId('plotStylePseudocolorRow'), plotStylePseudocolor: byId('plotStylePseudocolor'),
   plotStylePaletteRow: byId('plotStylePaletteRow'), plotStylePalette: byId('plotStylePalette'),
+  compensationButton: byId('compensationButton'), compensationStatus: byId('compensationStatus'), compensationModal: byId('compensationModal'),
+  compensationEnabled: byId('compensationEnabled'), compensationChannels: byId('compensationChannels'), compensationMatrixWrap: byId('compensationMatrixWrap'), compensationFeedback: byId('compensationFeedback'),
+  compensationSelectFluorescence: byId('compensationSelectFluorescence'), compensationClearChannels: byId('compensationClearChannels'), compensationResetMatrix: byId('compensationResetMatrix'),
+  compensationCancel: byId('compensationCancel'), compensationApply: byId('compensationApply'),
 };
 const ctx = ui.plot.getContext('2d');
 const DEFAULT_PLOT_SIZE = { w: 900, h: 600 };
@@ -694,6 +774,8 @@ let gateDragState = null;
 let activeAxisPopover = null;
 let activePlotStyleMode = null;
 let plotStyle = { scatterDotSize: 1.5, scatterOpacity: 0.65, histLineWidth: 1.5, histFillOpacity: null, histogramYMode: 'percent', scatterGridPseudocolor: false, scatterGridPalette: 'viridis' };
+let compensationState = { enabled: false, channels: [], matrix: [] };
+let compensationDraft = null;
 const EXAMPLE_DATA_FILES = [
     'example_data/03-Well-B1.fcs',
     'example_data/03-Well-B2.fcs',
@@ -766,6 +848,356 @@ function syncToolAvailability() {
     if (!isHist && tool === 'segment') setTool('select');
 }
 
+// ---------------------------- Compensation ----------------------------
+function sampleDetectorNames(sample) {
+  return sample.paramDetectors?.length === sample.params.length ? sample.paramDetectors : sample.params;
+}
+
+function compensationChannelCatalog() {
+  const catalog = new Map();
+  samples.forEach(sample => {
+    const detectors = sampleDetectorNames(sample);
+    detectors.forEach((detector, index) => {
+      const key = String(detector || sample.params[index] || `P${index + 1}`).trim();
+      if (!key) return;
+      const stain = String(sample.paramStains?.[index] || '').trim();
+      if (!catalog.has(key)) catalog.set(key, { key, stains: new Set() });
+      if (stain && stain.toLowerCase() !== key.toLowerCase()) catalog.get(key).stains.add(stain);
+    });
+  });
+  return Array.from(catalog.values());
+}
+
+function isFluorescenceChannel(channel) {
+  const name = String(channel || '').trim().toUpperCase();
+  if (!name) return false;
+  return !/^(FSC|SSC)(?:-|$)/.test(name) && !/^(TIME|EVENT|INDEX)(?:-|$)/.test(name) && !/-W$/.test(name);
+}
+
+function defaultCompensationChannelKeys(catalog = compensationChannelCatalog()) {
+  const groups = new Map();
+  catalog.filter(item => isFluorescenceChannel(item.key)).forEach(item => {
+    const base = item.key.replace(/-(A|H|W)$/i, '').toUpperCase();
+    if (!groups.has(base)) groups.set(base, []);
+    groups.get(base).push(item);
+  });
+  return Array.from(groups.values()).map(group => {
+    const stained = group.filter(item => item.stains.size > 0);
+    const candidates = stained.length ? stained : group;
+    return candidates.find(item => /-A$/i.test(item.key))
+      || candidates.find(item => /-H$/i.test(item.key))
+      || candidates[0];
+  }).filter(Boolean).map(item => item.key);
+}
+
+function normalizeCompensationState(value = {}) {
+  const channels = Array.from(new Set((value.channels || []).map(v => String(v).trim()).filter(Boolean)));
+  const matrix = channels.map((source, row) => channels.map((target, col) => {
+    if (row === col) return 100;
+    const raw = value.matrix?.[row]?.[col];
+    const number = Number(raw ?? 0);
+    return Number.isFinite(number) ? number : 0;
+  }));
+  return { enabled: Boolean(value.enabled), channels, matrix };
+}
+
+function invertSquareMatrix(matrix) {
+  const n = matrix.length;
+  if (!n || matrix.some(row => row.length !== n)) throw new Error('Compensation matrix must be square.');
+  const augmented = matrix.map((row, i) => [
+    ...row.map(Number),
+    ...Array.from({ length: n }, (_, j) => i === j ? 1 : 0),
+  ]);
+  for (let col = 0; col < n; col++) {
+    let pivotRow = col;
+    for (let row = col + 1; row < n; row++) {
+      if (Math.abs(augmented[row][col]) > Math.abs(augmented[pivotRow][col])) pivotRow = row;
+    }
+    const pivot = augmented[pivotRow][col];
+    if (!Number.isFinite(pivot) || Math.abs(pivot) < 1e-10) throw new Error('The compensation matrix is singular. Check the spillover values.');
+    [augmented[col], augmented[pivotRow]] = [augmented[pivotRow], augmented[col]];
+    for (let j = 0; j < n * 2; j++) augmented[col][j] /= pivot;
+    for (let row = 0; row < n; row++) {
+      if (row === col) continue;
+      const factor = augmented[row][col];
+      if (factor === 0) continue;
+      for (let j = 0; j < n * 2; j++) augmented[row][j] -= factor * augmented[col][j];
+    }
+  }
+  return augmented.map(row => row.slice(n));
+}
+
+function compensationOperator(state) {
+  const detectorBySource = state.channels.map((_, detector) => state.channels.map((__, source) => {
+    if (detector === source) return 1;
+    return Number(state.matrix[source][detector]) / 100;
+  }));
+  return invertSquareMatrix(detectorBySource);
+}
+
+function parameterIndexForDetector(sample, detector) {
+  const names = sampleDetectorNames(sample);
+  const exact = names.indexOf(detector);
+  if (exact >= 0) return exact;
+  const normalized = String(detector).toLowerCase();
+  return names.findIndex(name => String(name).toLowerCase() === normalized);
+}
+
+function applyCompensationToSample(sample, state, operator = null) {
+  if (!sample.rawData) sample.rawData = sample.data;
+  if (!state.enabled) {
+    sample.data = sample.rawData;
+    sample.compensationApplied = false;
+    return true;
+  }
+  const indices = state.channels.map(channel => parameterIndexForDetector(sample, channel));
+  if (indices.some(index => index < 0)) {
+    sample.data = sample.rawData;
+    sample.compensationApplied = false;
+    return false;
+  }
+  const inverse = operator || compensationOperator(state);
+  const nextData = sample.rawData.slice();
+  indices.forEach(index => { nextData[index] = new Float32Array(sample.n); });
+  for (let source = 0; source < indices.length; source++) {
+    const output = nextData[indices[source]];
+    for (let event = 0; event < sample.n; event++) {
+      let value = 0;
+      for (let detector = 0; detector < indices.length; detector++) {
+        value += inverse[source][detector] * sample.rawData[indices[detector]][event];
+      }
+      output[event] = value;
+    }
+  }
+  sample.data = nextData;
+  sample.compensationApplied = true;
+  return true;
+}
+
+function compensationCompatibility(state = compensationState) {
+  if (!state.enabled) return { applied: 0, skipped: 0 };
+  let applied = 0;
+  let skipped = 0;
+  samples.forEach(sample => {
+    const compatible = state.channels.every(channel => parameterIndexForDetector(sample, channel) >= 0);
+    if (compatible) applied++;
+    else skipped++;
+  });
+  return { applied, skipped };
+}
+
+function updateCompensationStatus() {
+  const { applied, skipped } = compensationCompatibility();
+  if (!compensationState.enabled || compensationState.channels.length < 2) {
+    ui.compensationStatus.textContent = 'Off';
+    ui.compensationStatus.classList.remove('is-active');
+    ui.compensationButton.title = 'Set manual fluorescence compensation';
+    return;
+  }
+  ui.compensationStatus.textContent = `${compensationState.channels.length} channels`;
+  ui.compensationStatus.classList.add('is-active');
+  ui.compensationButton.title = skipped
+    ? `Compensation active for ${applied} sample${applied === 1 ? '' : 's'}; ${skipped} incompatible`
+    : `Compensation active for ${applied} sample${applied === 1 ? '' : 's'}`;
+}
+
+function resetCompensatedAxisRanges(state) {
+  const affected = new Set();
+  samples.forEach(sample => state.channels.forEach(channel => {
+    const index = parameterIndexForDetector(sample, channel);
+    if (index >= 0) affected.add(sample.params[index]);
+  }));
+  affected.forEach(param => delete paramSettings[param]);
+}
+
+function applyCompensationState(nextState, { refresh = true } = {}) {
+  const normalized = normalizeCompensationState(nextState);
+  if (normalized.enabled && normalized.channels.length < 2) throw new Error('Choose at least two channels to enable compensation.');
+  const operator = normalized.enabled ? compensationOperator(normalized) : null;
+  const affectedState = { channels: Array.from(new Set([...compensationState.channels, ...normalized.channels])) };
+  samples.forEach(sample => applyCompensationToSample(sample, normalized, operator));
+  compensationState = normalized;
+  resetCompensatedAxisRanges(affectedState);
+  markGatePercentDirty();
+  updateCompensationStatus();
+  if (refresh) {
+    autoRangesFromData();
+    render();
+  }
+}
+
+function draftValue(source, target) {
+  if (source === target) return 100;
+  return Number(compensationDraft.values[source]?.[target] ?? 0);
+}
+
+function setDraftValue(source, target, value) {
+  if (!compensationDraft.values[source]) compensationDraft.values[source] = {};
+  compensationDraft.values[source][target] = value;
+}
+
+function renderCompensationMatrix() {
+  ui.compensationMatrixWrap.innerHTML = '';
+  const channels = Array.from(compensationDraft.selected);
+  if (channels.length < 2) {
+    const empty = document.createElement('div');
+    empty.className = 'compensationEmpty';
+    empty.textContent = compensationChannelCatalog().length
+      ? 'Select at least two fluorescence channels to build a spillover matrix.'
+      : 'Load an FCS or CSV sample to configure compensation.';
+    ui.compensationMatrixWrap.append(empty);
+    return;
+  }
+  const table = document.createElement('table');
+  table.className = 'compensationMatrix';
+  const head = document.createElement('thead');
+  const headRow = document.createElement('tr');
+  const corner = document.createElement('th');
+  corner.textContent = 'Source';
+  headRow.append(corner);
+  channels.forEach(channel => {
+    const th = document.createElement('th');
+    th.textContent = channel;
+    th.title = channel;
+    headRow.append(th);
+  });
+  head.append(headRow);
+  table.append(head);
+  const body = document.createElement('tbody');
+  channels.forEach(source => {
+    const row = document.createElement('tr');
+    const label = document.createElement('th');
+    label.textContent = source;
+    label.title = source;
+    row.append(label);
+    channels.forEach(target => {
+      const cell = document.createElement('td');
+      if (source === target) {
+        const diagonal = document.createElement('span');
+        diagonal.className = 'compensationDiagonal';
+        diagonal.textContent = '100';
+        cell.append(diagonal);
+      } else {
+        const input = document.createElement('input');
+        input.type = 'number';
+        input.step = '0.1';
+        input.value = String(draftValue(source, target));
+        input.setAttribute('aria-label', `${source} spill into ${target}, percent`);
+        input.addEventListener('input', () => {
+          const value = Number(input.value);
+          if (Number.isFinite(value)) setDraftValue(source, target, value);
+        });
+        cell.append(input);
+      }
+      row.append(cell);
+    });
+    body.append(row);
+  });
+  table.append(body);
+  ui.compensationMatrixWrap.append(table);
+}
+
+function renderCompensationChannels() {
+  ui.compensationChannels.innerHTML = '';
+  const catalog = compensationChannelCatalog();
+  if (!catalog.length) {
+    const empty = document.createElement('span');
+    empty.className = 'hint';
+    empty.textContent = 'No parameters available';
+    ui.compensationChannels.append(empty);
+  }
+  catalog.forEach(({ key, stains }) => {
+    const label = document.createElement('label');
+    label.className = 'compensationChannel';
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = compensationDraft.selected.has(key);
+    checkbox.addEventListener('change', () => {
+      if (checkbox.checked) compensationDraft.selected.add(key);
+      else compensationDraft.selected.delete(key);
+      renderCompensationMatrix();
+    });
+    const textNode = document.createElement('span');
+    const stainText = Array.from(stains).slice(0, 2).join(', ');
+    textNode.textContent = stainText ? `${key} · ${stainText}` : key;
+    textNode.title = stainText ? `${key}: ${Array.from(stains).join(', ')}` : key;
+    label.append(checkbox, textNode);
+    ui.compensationChannels.append(label);
+  });
+}
+
+function openCompensationModal() {
+  const values = {};
+  compensationState.channels.forEach((source, row) => {
+    values[source] = values[source] || {};
+    compensationState.channels.forEach((target, col) => { values[source][target] = compensationState.matrix[row]?.[col] ?? (row === col ? 100 : 0); });
+  });
+  const catalog = compensationChannelCatalog();
+  const available = new Set(catalog.map(item => item.key));
+  const configured = compensationState.channels.filter(channel => available.has(channel));
+  const initialChannels = configured.length ? configured : defaultCompensationChannelKeys(catalog);
+  compensationDraft = {
+    enabled: compensationState.channels.length ? compensationState.enabled : true,
+    selected: new Set(initialChannels),
+    values,
+  };
+  ui.compensationEnabled.checked = compensationDraft.enabled;
+  ui.compensationFeedback.textContent = '';
+  ui.compensationFeedback.classList.remove('is-error');
+  renderCompensationChannels();
+  renderCompensationMatrix();
+  ui.compensationModal.classList.add('visible');
+  requestAnimationFrame(() => ui.compensationEnabled.focus());
+}
+
+function closeCompensationModal() {
+  ui.compensationModal.classList.remove('visible');
+  compensationDraft = null;
+  ui.compensationButton.focus();
+}
+
+ui.compensationButton.addEventListener('click', openCompensationModal);
+ui.compensationCancel.addEventListener('click', closeCompensationModal);
+ui.compensationModal.addEventListener('mousedown', event => {
+  if (event.target === ui.compensationModal) closeCompensationModal();
+});
+ui.compensationEnabled.addEventListener('change', () => { if (compensationDraft) compensationDraft.enabled = ui.compensationEnabled.checked; });
+ui.compensationSelectFluorescence.addEventListener('click', () => {
+  compensationDraft.selected = new Set(defaultCompensationChannelKeys());
+  renderCompensationChannels();
+  renderCompensationMatrix();
+});
+ui.compensationClearChannels.addEventListener('click', () => {
+  compensationDraft.selected.clear();
+  renderCompensationChannels();
+  renderCompensationMatrix();
+});
+ui.compensationResetMatrix.addEventListener('click', () => {
+  Array.from(compensationDraft.selected).forEach(source => Array.from(compensationDraft.selected).forEach(target => setDraftValue(source, target, source === target ? 100 : 0)));
+  renderCompensationMatrix();
+});
+ui.compensationApply.addEventListener('click', async () => {
+  const channels = Array.from(compensationDraft.selected);
+  const next = {
+    enabled: ui.compensationEnabled.checked,
+    channels,
+    matrix: channels.map(source => channels.map(target => draftValue(source, target))),
+  };
+  ui.compensationFeedback.textContent = next.enabled ? 'Applying compensation…' : 'Restoring raw values…';
+  ui.compensationFeedback.classList.remove('is-error');
+  ui.compensationApply.disabled = true;
+  await new Promise(resolve => requestAnimationFrame(resolve));
+  try {
+    applyCompensationState(next);
+    closeCompensationModal();
+  } catch (error) {
+    ui.compensationFeedback.textContent = error.message;
+    ui.compensationFeedback.classList.add('is-error');
+  } finally {
+    ui.compensationApply.disabled = false;
+  }
+});
+
 // ---------------------------- FCS / CSV Loader ----------------------------
 async function addSampleFromBuffer(buffer, name) {
   const ext = name.toLowerCase().split('.').pop();
@@ -776,6 +1208,8 @@ async function addSampleFromBuffer(buffer, name) {
   sample.name = sample.name.replace(/\.(fcs|csv)$/i, '');
   sample.id = crypto.randomUUID();
   sample.color = palette[samples.length % palette.length];
+  sample.rawData = sample.data;
+  if (compensationState.enabled) applyCompensationToSample(sample, compensationState);
   samples.push(sample);
   visibleSampleIds.add(sample.id);
 }
@@ -783,6 +1217,7 @@ function finishSampleLoad() {
   refreshFileList();
   refreshParamOptions();
   markGatePercentDirty();
+  updateCompensationStatus();
   ui.xParam.dispatchEvent(new Event('change'));
   ui.yParam.dispatchEvent(new Event('change'));
 }
@@ -909,6 +1344,7 @@ function refreshFileList(){
     row.append(chk, sw, name, eventCount, removeBtn);
     ui.fileList.append(row);
   });
+  updateCompensationStatus();
 }
 
 // Drag and Drop
@@ -3037,6 +3473,11 @@ ui.plot.addEventListener('contextmenu', (e)=>{
 
 // Feature: Keyboard Shortcuts
 window.addEventListener('keydown', (e)=>{
+  if (e.key === 'Escape' && ui.compensationModal.classList.contains('visible')) {
+    e.preventDefault();
+    closeCompensationModal();
+    return;
+  }
   const active = document.activeElement;
   if (!active) return;
   if (active.tagName === 'INPUT' || active.tagName === 'SELECT' || active.tagName === 'TEXTAREA' || active.isContentEditable) return;
@@ -4261,8 +4702,13 @@ ui.confirmStatsExport.addEventListener('click', () => {
 
 ui.saveWorkspace.addEventListener('click', () => {
     const workspace = {
-        samples: samples.map(s => ({...s, data: Array.from(s.data.map(d => Array.from(d)))})), 
+        samples: samples.map(s => {
+            const { rawData, compensationApplied, ...storedSample } = s;
+            const sourceData = rawData || s.data;
+            return {...storedSample, data: Array.from(sourceData, d => Array.from(d))};
+        }),
         gates, axis, visibleSampleIds: Array.from(visibleSampleIds), currentPopulationId, gridCols: ui.gridCols.value, plotStyle,
+        compensation: compensationState,
     };
     const blob = new Blob([JSON.stringify(workspace, null, 2)], {type: 'application/json'});
     const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'workspace.json'; a.click(); URL.revokeObjectURL(url);
@@ -4275,11 +4721,16 @@ ui.loadWorkspaceInput.addEventListener('change', (e) => {
     reader.onload = (event) => {
         try {
             const workspace = JSON.parse(event.target.result);
-            samples = workspace.samples.map(s => ({...s, data: s.data.map(d => Float32Array.from(d))}));
+            samples = workspace.samples.map(s => {
+                const data = s.data.map(d => Float32Array.from(d));
+                return {...s, data, rawData: data};
+            });
             gates = workspace.gates; axis = workspace.axis;
             gates.forEach(normalizeGate);
             visibleSampleIds = new Set(workspace.visibleSampleIds); currentPopulationId = workspace.currentPopulationId;
             if (workspace.plotStyle) plotStyle = {...plotStyle, ...workspace.plotStyle};
+            compensationState = normalizeCompensationState(workspace.compensation);
+            applyCompensationState(compensationState, { refresh: false });
             markGatePercentDirty();
             refreshFileList(); refreshParamOptions(); rebuildGateTree();
             ui.xParam.value = axis.xParam; ui.yParam.value = axis.yParam; ui.xScale.value = axis.xScale; ui.yScale.value = axis.yScale;
@@ -4367,7 +4818,7 @@ async function parseCSV(buffer, name){
     const parts = lines[i].split(','); if(parts.length!==cols) continue;
     for(let c=0;c<cols;c++) arrays[c].push(parseFloat(parts[c]));
   }
-  return { name, params: header, data: arrays.map(a=> Float32Array.from(a)), n: arrays[0].length };
+  return { name, params: header, paramDetectors: header.slice(), paramStains: header.map(() => ''), data: arrays.map(a=> Float32Array.from(a)), n: arrays[0].length };
 }
 
 async function parseFCS(buffer, name){
@@ -4390,7 +4841,15 @@ async function parseFCS(buffer, name){
   const dEnd = meta["$ENDDATA"] ? parseInt(meta["$ENDDATA"]) : hDataEnd;
   if(!(Number.isFinite(dStart) && Number.isFinite(dEnd) && dEnd > dStart)) { throw new Error("Invalid data offsets"); }
   const params = [];
-  for (let i=1;i<=par;i++){ params.push( (meta[`$P${i}S`] || meta[`$P${i}N`] || `P${i}`).toString() ); }
+  const paramDetectors = [];
+  const paramStains = [];
+  for (let i=1;i<=par;i++){
+    const detector = (meta[`$P${i}N`] || `P${i}`).toString();
+    const stain = (meta[`$P${i}S`] || '').toString();
+    paramDetectors.push(detector);
+    paramStains.push(stain);
+    params.push(stain || detector);
+  }
   const view = new DataView(buffer, dStart, dEnd - dStart + 1);
   const arrays = Array.from({length:par}, ()=> new Float32Array(tot));
   const bytesPer = [];
@@ -4427,7 +4886,7 @@ async function parseFCS(buffer, name){
       base += step * tot;
     }
   } else { throw new Error("Unsupported $MODE " + mode); }
-  return { name, params, data: arrays, n: tot };
+  return { name, params, paramDetectors, paramStains, data: arrays, n: tot };
 }
 
 function parseText(txt){
@@ -4461,6 +4920,7 @@ function hexToRgb(hex) {
 setAxisFromUI();
 refreshFileList();
 rebuildGateTree();
+updateCompensationStatus();
 try {
     setTool('select');
     syncToolAvailability();

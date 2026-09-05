@@ -5,6 +5,7 @@ Feather Flow is a lightweight browser app for exploring flow cytometry data. It 
 ## Features
 
 - Import `.fcs` and `.csv` files, including drag-and-drop loading into the empty plot workspace or Files panel.
+- Apply reversible manual fluorescence compensation with a detector-aware spillover matrix.
 - View samples as scatter overlays, scatter grids, histogram overlays, and histogram offsets, with overlay histograms normalized by peak or shown as event counts.
 - Draw rectangle, ellipse, polygon, and histogram segment gates.
 - Build hierarchical populations, including sample-specific gates and apply-to-sample or apply-to-all workflows.
@@ -46,11 +47,20 @@ CSV files should use the first row for parameter names. Numeric columns are impo
 
 1. Add one or more `.fcs` or `.csv` files.
 2. Choose X/Y parameters and a plot type.
-3. Adjust linear/log scales and axis ranges as needed.
-4. Draw gates from the Gates panel.
-5. Double-click a gate in the plot or hierarchy to select that population.
-6. Use exports for figures, statistics, or event-level population data.
-7. Save a workspace JSON if you want to return to the session later.
+3. Open **Compensation** in the Data panel if the acquisition needs spillover correction.
+4. Adjust linear/log scales and axis ranges as needed.
+5. Draw gates from the Gates panel.
+6. Double-click a gate in the plot or hierarchy to select that population.
+7. Use exports for figures, statistics, or event-level population data.
+8. Save a workspace JSON if you want to return to the session later.
+
+## Compensation
+
+The Compensation control stays collapsed in the Data panel until needed. Open it, select two or more fluorescence detectors, and enter spillover percentages. Rows are source channels and columns are the detectors in which that source signal was measured; diagonal values remain fixed at 100%.
+
+Applying the matrix updates plots, gates, statistics, and exports. Raw event values are retained in memory, so compensation can be edited or disabled without reloading files. The raw values and compensation settings are also stored safely in workspace files, preventing double compensation when a workspace is reopened.
+
+`compensation_test_data/` contains a small public set of unstained and singly stained FCS controls for exercising this workflow.
 
 ## Gates
 
@@ -80,6 +90,7 @@ The app is currently implemented as a static single-page app:
 - `index.html` contains the UI, plotting, parsers, gates, and export logic.
 - `feather-icon.svg` is the active favicon; the header uses the matching inline product mark.
 - `example_data/` contains bundled example FCS files.
+- `compensation_test_data/` contains openly licensed compensation control files and source notes.
 
 Because there is no build step, refreshing the browser is enough after editing `index.html`.
 
