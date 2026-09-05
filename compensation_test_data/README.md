@@ -10,6 +10,6 @@ These five FCS 2.0 files are the compact compensation-control set distributed wi
 | `FL3-H_single_stain.fcs` | FL3-H single stain |
 | `FL4-H_single_stain.fcs` | FL4-H single stain |
 
-To exercise Feather Flow's manual compensation editor, load the five files together, open **Compensation** in the Data panel, and select the four `FL*-H` channels. The files are single-stain controls suitable for inspecting spill into the other detectors and refining the off-diagonal percentages.
+To exercise Cytofeather's manual compensation editor, load the five files together, open **Compensation** in the Data panel, and select the four `FL*-H` channels. The files are single-stain controls suitable for inspecting spill into the other detectors and refining the off-diagonal percentages.
 
-Source: [`RGLab/flowCore`, `inst/extdata/compdata/data`](https://github.com/RGLab/flowCore/tree/devel/inst/extdata/compdata/data). The control-to-file mapping is documented in the package's [`HowTo-flowCore` vignette](https://github.com/RGLab/flowCore/blob/devel/vignettes/HowTo-flowCore.Rnw). The source package is licensed under Artistic-2.0; these files retain that provenance and are not covered by Feather Flow's MIT license.
+Source: [`RGLab/flowCore`, `inst/extdata/compdata/data`](https://github.com/RGLab/flowCore/tree/devel/inst/extdata/compdata/data). The control-to-file mapping is documented in the package's [`HowTo-flowCore` vignette](https://github.com/RGLab/flowCore/blob/devel/vignettes/HowTo-flowCore.Rnw). The source package is licensed under Artistic-2.0; these files retain that provenance and are not covered by Cytofeather's MIT license.

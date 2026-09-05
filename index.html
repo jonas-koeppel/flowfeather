@@ -4,10 +4,27 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Fast, private flow cytometry analysis in your browser." />
+  <link rel="canonical" href="https://jonas-koeppel.github.io/flowfeather/" />
+  <meta name="application-name" content="Cytofeather" />
+  <meta name="apple-mobile-web-app-title" content="Cytofeather" />
+  <meta property="og:site_name" content="Cytofeather" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cytofeather — Flow cytometry in your browser" />
+  <meta property="og:description" content="Explore flow cytometry data with visual gates, sample comparisons, and PDF or PNG exports. Free, local, and no signup." />
+  <meta property="og:url" content="https://jonas-koeppel.github.io/flowfeather/" />
+  <meta property="og:image" content="https://jonas-koeppel.github.io/flowfeather/cytofeather-icon-512.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:alt" content="Cytofeather: a mint and lavender feather with three cytometry dots" />
+  <meta name="twitter:image" content="https://jonas-koeppel.github.io/flowfeather/cytofeather-icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Cytofeather — Flow cytometry in your browser" />
+  <meta name="twitter:description" content="Visual gating, sample comparisons, and figure exports. Free, local, and no signup." />
   <meta name="theme-color" content="#f1f3f6" />
-  <title>Feather Flow — Flow cytometry, beautifully simple</title>
-  <link rel="icon" type="image/svg+xml" href="./feather-icon.svg" />
-  <link rel="shortcut icon" href="./feather-icon.svg" />
+  <title>Cytofeather — Flow cytometry, beautifully simple</title>
+  <link rel="icon" type="image/svg+xml" href="./cytofeather-icon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./cytofeather-icon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./cytofeather-icon-180.png" />
   <style>
     :root {
       --ui-font: "Avenir Next", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -29,11 +46,6 @@
     header{grid-column:1/4;display:flex;align-items:center;justify-content:space-between;background:color-mix(in srgb, var(--panel) 94%, transparent);border:1px solid color-mix(in srgb, var(--border-color) 86%, transparent);border-radius:16px;padding:10px 12px;position:sticky;top:12px;z-index:20;box-shadow:0 18px 48px rgba(12, 18, 28, 0.08);backdrop-filter:blur(18px)}
     .brand{display:flex;align-items:center;gap:10px;min-width:max-content}
     .brandIcon{width:30px;height:30px;display:block}
-    .brandIcon .feather-group{transform-origin:12px 12px;transform-box:fill-box}
-    .brandIcon:hover .feather-group{animation:brandIconSpin 1.2s linear infinite}
-    .brandIcon .feather-vein{stroke:#fff}
-    body[data-theme="dark"] .brandIcon .feather-vein{stroke:#05070b}
-    @keyframes brandIconSpin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
     header .btns{display:flex;gap:14px;flex-wrap:wrap; align-items: center;}
     header .btns label{margin:0}
     
@@ -234,7 +246,6 @@
     .brand{gap:10px;min-width:0}
     .brandIcon{width:34px;height:34px;filter:none;transition:transform .24s cubic-bezier(.2,.8,.2,1)}
     .brandIcon:hover{transform:rotate(-4deg) scale(1.03);filter:none}
-    .brandIcon:hover .feather-group{animation:none}
     .brandCopy{display:flex;align-items:baseline;gap:7px;min-width:0}
     .brandCopy h3{font-size:15px;font-weight:680;letter-spacing:-.025em;white-space:nowrap}
     header .btns{display:flex;justify-content:flex-start;gap:6px;min-width:0}
@@ -283,7 +294,7 @@
     .canvasWelcome.is-drop-target .welcomeGlyph{transform:translateY(-2px) scale(1.035)}
     body.has-data .canvasWelcome{opacity:0;visibility:hidden;pointer-events:none}.welcomeContent{max-width:340px;display:flex;flex-direction:column;align-items:center}
     .welcomeGlyph{width:58px;height:58px;margin-bottom:17px;border-radius:17px;display:grid;place-items:center;color:#fff;background:#171717;box-shadow:0 12px 26px rgba(0,0,0,.14);transition:transform .18s}
-    body[data-theme="dark"] .welcomeGlyph{color:#171717;background:#f4f4f1}.welcomeGlyph svg{width:31px;height:31px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+    .welcomeGlyph,body[data-theme="dark"] .welcomeGlyph{background:transparent}.welcomeGlyph img{width:100%;height:100%;display:block}
     .canvasWelcome h2{margin:0;font-size:23px;line-height:1.12;font-weight:680;letter-spacing:-.04em}.canvasWelcome p{max-width:300px;margin:9px 0 17px;color:var(--muted);font-size:12.5px;line-height:1.55}
     .canvasAction{display:inline-flex;align-items:center;justify-content:center;height:37px;margin:0;padding:0 15px;border-radius:10px;background:var(--text);color:var(--panel);font-size:12px;font-weight:620;text-transform:none;letter-spacing:0;cursor:pointer;box-shadow:0 6px 15px rgba(0,0,0,.13);transition:transform .18s,box-shadow .18s}
     .canvasAction:hover{transform:translateY(-1px);box-shadow:0 9px 18px rgba(0,0,0,.16)}.privacyNote{display:flex;align-items:center;gap:5px;margin-top:12px;color:var(--muted);font-size:10px}.privacyNote svg{width:12px;height:12px;stroke:var(--good);fill:none;stroke-width:2}
@@ -336,8 +347,12 @@
       body{padding:0 10px}.app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto auto;margin:10px auto;min-height:calc(100dvh - 20px);border-radius:20px}.left,.mid,.right,header{grid-column:1;min-width:0}header{grid-template-columns:minmax(0,1fr) auto;padding:12px 16px;row-gap:10px;min-height:0}.brand{grid-column:1;grid-row:1}.theme-switch-wrapper{grid-column:2;grid-row:1;margin-left:0}header .btns{grid-column:1/3;grid-row:2;width:100%;justify-content:flex-start}.toolbarButton span:not([aria-hidden="true"]){display:none}.toolbarButton{width:38px;padding:0}.workspaceMenu,.exportMenu{left:0;right:auto}.mid{order:2;min-height:0;padding:20px}.left{order:3;border-right:0;border-top:1px solid var(--border-color)}.right{order:4;display:block;border-left:0;border-top:1px solid var(--border-color)}.right>.sep{display:block}.right>.gateTools{max-width:none}.canvasWelcome{padding:20px}.exportOptionGrid{grid-template-columns:1fr}
     }
     @media(max-width:520px){body{padding:0}.app{margin:0;border:0;border-radius:0;min-height:100dvh}.col{padding:18px}.mid{padding:16px}body:not(.has-data) .plotWrap{min-height:320px}.canvasWelcome h2{font-size:20px}.canvasWelcome p{font-size:11.5px}.welcomeGlyph{width:50px;height:50px;border-radius:15px}.modal-overlay{padding:8px}.modal-content{max-height:calc(100dvh - 16px)}}
+    .quickGuide{margin-top:20px;color:var(--muted);font-size:11px;line-height:1.6}
+    .quickGuide summary{cursor:pointer;color:var(--text);font-weight:600}
+    .quickGuide p{margin:10px 0}.quickGuide a{color:var(--text);text-underline-offset:3px}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
   </style>
-  <script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script defer src="./vendor/jspdf.umd.min.js"></script>
 </head>
 <body data-theme="light">
   <input type="color" id="colorPicker" style="visibility: hidden; position: absolute; top: -100px;">
@@ -347,11 +362,11 @@
     <div class="modal-content">
       <h4>PDF Export Options</h4>
       <div class="ctrlRow">
-        <div><label>Width (cm)</label><input type="number" id="pdfWidth" value="10"></div>
-        <div><label>Height (cm)</label><input type="number" id="pdfHeight" value="10"></div>
+        <div><label for="pdfWidth">Width (cm)</label><input type="number" id="pdfWidth" value="10" min="5" max="100" step="0.1" required></div>
+        <div><label for="pdfHeight">Height (cm)</label><input type="number" id="pdfHeight" value="10" min="5" max="100" step="0.1" required></div>
       </div>
-      <div><label>X Axis Label</label><input type="text" id="pdfXLabel"></div>
-      <div><label>Y Axis Label</label><input type="text" id="pdfYLabel"></div>
+      <div><label for="pdfXLabel">X Axis Label</label><input type="text" id="pdfXLabel"></div>
+      <div><label for="pdfYLabel">Y Axis Label</label><input type="text" id="pdfYLabel"></div>
       <label style="display: flex; align-items: center; gap: 8px; margin-top: 15px;">
         <input type="checkbox" id="pdfShowGates" checked> Show Gates
       </label>
@@ -377,11 +392,11 @@
   <div class="modal-overlay" id="pngExportModal">
     <div class="modal-content">
       <h4>PNG Export Options</h4>
-      <div><label>Scale Factor (Resolution)</label><input type="number" id="pngScale" value="2" min="1" max="10"></div>
+      <div><label for="pngScale">Scale Factor (Resolution)</label><input type="number" id="pngScale" value="2" min="1" max="10"></div>
       <label style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
         <input type="checkbox" id="pngShowPercent" checked> Show Percent
       </label>
-      <div class="hint">1 = Screen size (900x600). 2 = 2x High DPI (1800x1200), etc.</div>
+      <div class="hint">1 = Current plot size. 2 = Twice the width and height for higher resolution.</div>
       <div class="modal-footer">
         <button id="cancelPngExport" class="secondary">Cancel</button>
         <button id="confirmPngExport">Export</button>
@@ -483,25 +498,8 @@
   <div class="app">
     <header>
       <div class="brand">
-        <svg class="brandIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true">
-          <defs>
-            <linearGradient id="brandFeather2Body" x1="9" y1="6" x2="55" y2="59" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#30302f" />
-              <stop offset=".55" stop-color="#171717" />
-              <stop offset="1" stop-color="#090909" />
-            </linearGradient>
-            <radialGradient id="brandGlow" cx="0" cy="0" r="1" gradientTransform="translate(19 13) rotate(45) scale(42)"><stop stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-          </defs>
-          <rect x="3" y="3" width="58" height="58" rx="17" fill="url(#brandFeather2Body)"/>
-          <rect x="3" y="3" width="58" height="58" rx="17" fill="url(#brandGlow)"/>
-          <g class="feather-group" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 48c8-15 17-25 31-33-1 15-9 27-22 32-3 1-6 1-9 1Z" fill="#fff" fill-opacity=".16"/>
-            <path d="M16 50c8-14 18-25 32-35"/>
-            <path d="M29 35h12M24 42h9M37 25l1 8"/>
-          </g>
-          <circle cx="48" cy="45" r="2.6" fill="#82aff4"/><circle cx="51" cy="38" r="1.5" fill="#fff" fill-opacity=".8"/>
-        </svg>
-        <div class="brandCopy"><h3 style="margin:0">Feather Flow</h3></div>
+        <img class="brandIcon" src="./cytofeather-icon.svg" width="34" height="34" alt="" aria-hidden="true" />
+        <div class="brandCopy"><h3 style="margin:0">Cytofeather</h3></div>
       </div>
       <div class="btns">
         <label id="addFilesButton" class="toolbarButton primaryAction" style="cursor:pointer" role="button" tabindex="0" aria-label="Add files">
@@ -555,24 +553,24 @@
       
       <div class="swapRow">
         <div style="flex:1;">
-          <label>X param</label>
+          <label for="xParam">X param</label>
           <select id="xParam"></select>
         </div>
         <button id="swapAxes" class="borderless icon-only" title="Swap Axes" style="margin-bottom: 2px;">⇄</button>
         <div style="flex:1;">
-          <label>Y param</label>
+          <label for="yParam">Y param</label>
           <select id="yParam"></select>
         </div>
       </div>
 
-      <label>Plot type</label>
+      <label for="plotType">Plot type</label>
       <select id="plotType">
         <option value="scatter">Scatter (Overlay)</option>
         <option value="scatter-grid">Scatter (Grid)</option>
         <option value="hist">Histogram (Overlay)</option>
         <option value="hist-offset">Histogram (Offset)</option>
       </select>
-      <label>Population</label>
+      <label for="population">Population</label>
       <select id="population"></select>
 
       <button id="compensationButton" class="compensationEntry" type="button" aria-haspopup="dialog" aria-controls="compensationModal">
@@ -585,11 +583,11 @@
       <h3>Axes</h3>
       <div class="ctrlRow">
         <div>
-          <label>X scale</label>
+          <label for="xScale">X scale</label>
           <select id="xScale"><option>linear</option><option>log</option></select>
         </div>
         <div>
-          <label>Y scale</label>
+          <label for="yScale">Y scale</label>
           <select id="yScale"><option>linear</option><option>log</option></select>
         </div>
       </div>
@@ -615,7 +613,7 @@
         <canvas id="plot" width="900" height="600"></canvas>
         <div class="canvasWelcome" id="canvasWelcome">
           <div class="welcomeContent">
-            <div class="welcomeGlyph"><svg viewBox="0 0 40 40"><path d="M7 31c5-10 12-18 25-24-1 12-7 21-17 24-3 1-5 1-8 0Z"/><path d="M6 34c7-11 15-20 26-27"/><path d="M17 23h9M22 17h7"/></svg></div>
+            <div class="welcomeGlyph"><img src="./cytofeather-icon.svg" width="58" height="58" alt="" aria-hidden="true" /></div>
             <h2>Your analysis starts here</h2>
             <p>Drop in FCS or CSV files and explore populations instantly — no upload, no setup.</p>
             <label id="canvasFileButton" class="canvasAction" for="fileInput" role="button" tabindex="0" aria-label="Choose data files">Choose data files</label>
@@ -665,6 +663,16 @@
       <label style="margin-top:12px">Gate hierarchy</label>
       <div id="gateTree" class="tree"></div>
       <div id="gatesEmptyState" class="emptyState">No gates yet. Choose a gate tool and draw on the plot.</div>
+      <details class="quickGuide">
+        <summary>Quick guide</summary>
+        <p>Start with <b>Example Data</b> in Files, or add your own FCS or CSV files. Choose your parameters and plot type in Data.</p>
+        <p>Choose a gate tool, then drag on the plot. For a polygon, click its corners and press Enter or double-click to finish. Double-click a gate to view its population and draw child gates.</p>
+        <p>Right-click gates to apply them across samples. Click an axis label to change its range; right-click the plot to adjust its style.</p>
+        <p><b>Shortcuts:</b> S select · R rectangle · E ellipse · P polygon · G histogram segment · Z zoom · Esc cancel.</p>
+        <p>Use <b>Workspace → Save Workspace</b> before closing or reloading. Sessions are not saved automatically.</p>
+        <p>Files and exports stay on your device. Workspace files contain your sample data. Desktop browsers with a mouse or trackpad work best for gating.</p>
+        <p><a href="https://github.com/jonas-koeppel/flowfeather#readme" target="_blank" rel="noopener noreferrer">Documentation</a> · <a href="https://github.com/jonas-koeppel/flowfeather/issues" target="_blank" rel="noopener noreferrer">Report an issue</a></p>
+      </details>
     </section>
   </div>
 
@@ -674,20 +682,20 @@
       <button id="axisPopoverClose" class="borderless icon-only" type="button" aria-label="Close">✕</button>
     </div>
     <div id="axisStandardControls">
-      <label>Parameter</label>
+      <label for="axisPopoverParam">Parameter</label>
       <select id="axisPopoverParam"></select>
       <div class="miniGrid">
         <div>
-          <label>Scale</label>
+          <label for="axisPopoverScale">Scale</label>
           <select id="axisPopoverScale"><option value="linear">Linear</option><option value="log">Exponential</option></select>
         </div>
         <div></div>
         <div>
-          <label>Min</label>
+          <label for="axisPopoverMin">Min</label>
           <input id="axisPopoverMin" type="number" step="any" />
         </div>
         <div>
-          <label>Max</label>
+          <label for="axisPopoverMax">Max</label>
           <input id="axisPopoverMax" type="number" step="any" />
         </div>
       </div>
@@ -762,7 +770,7 @@ let editingGate = { id: null, handle: null };
 let currentPopulationId = null; 
 let axis = {xParam:null, yParam:null, xScale:'linear', yScale:'linear', xMin:null, xMax:null, yMin:null, yMax:null};
 let hoverGateId = null;
-const paramSettings = {}; 
+const paramSettings = Object.create(null);
 let gatePercentCache = new Map();
 let gatePercentBySampleCache = new Map();
 let gatePercentCacheDirty = true;
@@ -773,7 +781,8 @@ let labelDragSampleId = null;
 let gateDragState = null;
 let activeAxisPopover = null;
 let activePlotStyleMode = null;
-let plotStyle = { scatterDotSize: 1.5, scatterOpacity: 0.65, histLineWidth: 1.5, histFillOpacity: null, histogramYMode: 'percent', scatterGridPseudocolor: false, scatterGridPalette: 'viridis' };
+const DEFAULT_PLOT_STYLE = { scatterDotSize: 1.5, scatterOpacity: 0.65, histLineWidth: 1.5, histFillOpacity: null, histogramYMode: 'percent', scatterGridPseudocolor: false, scatterGridPalette: 'viridis' };
+let plotStyle = {...DEFAULT_PLOT_STYLE};
 let compensationState = { enabled: false, channels: [], matrix: [] };
 let compensationDraft = null;
 const EXAMPLE_DATA_FILES = [
@@ -783,7 +792,7 @@ const EXAMPLE_DATA_FILES = [
     'example_data/03-Well-B4.fcs',
 ];
 
-const idGen = (()=>{let i=1;return ()=>`G${i++}`})();
+const idGen = (()=>{let i=1;return ()=>{ while (gates.some(g => g.id === `G${i}`)) i++; return `G${i++}`; };})();
 function setTool(t){
     const toolBtn = document.querySelector(`[data-tool="${t}"]`);
     if (toolBtn && toolBtn.disabled) return;
@@ -820,7 +829,10 @@ function markGatePercentDirty() { gatePercentCacheDirty = true; }
 function syncToolAvailability() {
     const isHist = ui.plotType.value.startsWith('hist');
     const is2d = ui.plotType.value.startsWith('scatter');
-    ui.autoY.disabled = isHist || !is2d;
+    const hasData = visibleSamples().length > 0;
+    ui.exportMenuButton.disabled = !hasData;
+    ui.swapAxes.disabled = isHist || !hasData;
+    [ui.yParam, ui.yScale, ui.yMin, ui.yMax, ui.autoY].forEach(control => { control.disabled = isHist || !is2d; });
     ui.gridCols.disabled = ui.plotType.value !== 'scatter-grid';
     ui.gridColsWrap.style.display = ui.plotType.value === 'scatter-grid' ? 'flex' : 'none';
     const rectBtn = document.querySelector('[data-tool="rect"]');
@@ -832,21 +844,60 @@ function syncToolAvailability() {
         if (!btn.dataset.defaultTitle) btn.dataset.defaultTitle = btn.title || '';
         if (btn === segmentBtn) {
             btn.classList.toggle('is-hidden', !isHist);
-            btn.disabled = !isHist;
+            btn.disabled = !isHist || !hasData;
             btn.title = isHist ? btn.dataset.defaultTitle : `${btn.dataset.defaultTitle} (Histogram mode only)`;
         } else if (btn === rectBtn) {
             btn.classList.toggle('is-hidden', isHist);
-            btn.disabled = isHist;
+            btn.disabled = isHist || !hasData;
             btn.title = isHist ? `${btn.dataset.defaultTitle} (Use Segment in histogram mode)` : btn.dataset.defaultTitle;
         } else {
             btn.classList.toggle('is-hidden', isHist);
-            btn.disabled = isHist;
+            btn.disabled = isHist || !hasData;
             btn.title = isHist ? `${btn.dataset.defaultTitle} (Unavailable in histogram mode)` : btn.dataset.defaultTitle;
         }
     });
     if (isHist && (tool === 'ellipse' || tool === 'poly' || tool === 'rect')) setTool('segment');
     if (!isHist && tool === 'segment') setTool('select');
 }
+
+// Dialogs keep keyboard focus inside and return it to the opener when closed.
+const modalOpeners = new WeakMap();
+function openModal(modal) {
+  modalOpeners.set(modal, document.activeElement);
+  modal.classList.add('visible');
+  document.querySelector('.app').inert = true;
+  (modal.querySelector('input:not([disabled]), button:not([disabled]), select') || modal).focus();
+}
+function closeModal(modal) {
+  modal.classList.remove('visible');
+  document.querySelector('.app').inert = false;
+  const opener = modalOpeners.get(modal);
+  const fallback = modal === ui.compensationModal ? ui.compensationButton : ui.exportMenuButton;
+  (opener?.getClientRects().length ? opener : fallback).focus();
+}
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+  modal.setAttribute('role', 'dialog'); modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-label', modal.querySelector('h4').textContent);
+  modal.addEventListener('click', event => {
+    if (event.target === modal) {
+      if (modal === ui.compensationModal) closeCompensationModal(); else closeModal(modal);
+    }
+  });
+});
+document.addEventListener('keydown', event => {
+  const modal = document.querySelector('.modal-overlay.visible');
+  if (!modal) return;
+  event.stopPropagation();
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    if (modal === ui.compensationModal) closeCompensationModal(); else closeModal(modal);
+  } else if (event.key === 'Tab') {
+    const controls = Array.from(modal.querySelectorAll('button, input, select, [tabindex="0"]')).filter(el => !el.disabled && el.getClientRects().length);
+    const first = controls[0], last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  }
+}, true);
 
 // ---------------------------- Compensation ----------------------------
 function sampleDetectorNames(sample) {
@@ -958,7 +1009,7 @@ function applyCompensationToSample(sample, state, operator = null) {
   }
   const inverse = operator || compensationOperator(state);
   const nextData = sample.rawData.slice();
-  indices.forEach(index => { nextData[index] = new Float32Array(sample.n); });
+  indices.forEach(index => { nextData[index] = new Float64Array(sample.n); });
   for (let source = 0; source < indices.length; source++) {
     const output = nextData[indices[source]];
     for (let event = 0; event < sample.n; event++) {
@@ -1146,12 +1197,12 @@ function openCompensationModal() {
   ui.compensationFeedback.classList.remove('is-error');
   renderCompensationChannels();
   renderCompensationMatrix();
-  ui.compensationModal.classList.add('visible');
+  openModal(ui.compensationModal);
   requestAnimationFrame(() => ui.compensationEnabled.focus());
 }
 
 function closeCompensationModal() {
-  ui.compensationModal.classList.remove('visible');
+  closeModal(ui.compensationModal);
   compensationDraft = null;
   ui.compensationButton.focus();
 }
@@ -1203,7 +1254,8 @@ async function addSampleFromBuffer(buffer, name) {
   const ext = name.toLowerCase().split('.').pop();
   let sample;
   if (ext==='csv') sample = await parseCSV(buffer, name);
-  else sample = await parseFCS(buffer, name);
+  else if (ext==='fcs') sample = await parseFCS(buffer, name);
+  else throw new Error('Choose an .fcs or .csv file.');
 
   sample.name = sample.name.replace(/\.(fcs|csv)$/i, '');
   sample.id = crypto.randomUUID();
@@ -1236,7 +1288,7 @@ async function loadSelectedFiles(files) {
 }
 async function loadExampleData() {
   if (window.location.protocol === 'file:') {
-    alert('Example data cannot be loaded when opening index.html directly from disk. Open Feather Flow through GitHub Pages or run a local server, then use the http://127.0.0.1 URL.');
+    alert('Example data cannot be loaded when opening index.html directly from disk. Open Cytofeather through GitHub Pages or run a local server, then use the http://127.0.0.1 URL.');
     return;
   }
   ui.loadExampleData.disabled = true;
@@ -1248,11 +1300,11 @@ async function loadExampleData() {
       const buffer = await response.arrayBuffer();
       await addSampleFromBuffer(buffer, path.split('/').pop());
     }
-    finishSampleLoad();
   } catch (err) {
     alert(`Failed to load example data: ${err.message}. If this is hosted, make sure the example_data folder was committed and pushed.`);
     console.error(err);
   } finally {
+    finishSampleLoad();
     ui.loadExampleData.disabled = false;
     ui.loadExampleData.textContent = 'Example Data';
   }
@@ -1282,7 +1334,8 @@ function refreshFileList(){
     row.dataset.sampleId = s.id;
 
     const chk = Object.assign(document.createElement('input'),{type:'checkbox', checked:visibleSampleIds.has(s.id)});
-    chk.addEventListener('change', ()=>{ if(chk.checked) visibleSampleIds.add(s.id); else visibleSampleIds.delete(s.id); markGatePercentDirty(); render(); });
+    chk.setAttribute('aria-label', `Show ${s.name}`);
+    chk.addEventListener('change', ()=>{ if(chk.checked) visibleSampleIds.add(s.id); else visibleSampleIds.delete(s.id); markGatePercentDirty(); syncToolAvailability(); render(); });
     
     const sw = document.createElement('div'); sw.className='legendDot'; sw.style.background=s.color;
     sw.title = `Click to change color for ${s.name}`;
@@ -1332,8 +1385,16 @@ function refreshFileList(){
         if(confirm(`Remove ${s.name}?`)){
             samples = samples.filter(samp => samp.id !== s.id);
             visibleSampleIds.delete(s.id);
+            const removedGateIds = new Set(gates.filter(g => gateEffectiveSampleId(g) === s.id).map(g => g.id));
+            gates = gates.filter(g => !removedGateIds.has(g.id));
+            gates.forEach(g => { if (g.excludeSampleIds) g.excludeSampleIds = g.excludeSampleIds.filter(id => id !== s.id); });
+            if (removedGateIds.has(currentPopulationId)) currentPopulationId = null;
+            if (!samples.length) { gates = []; currentPopulationId = null; axis.xParam = null; axis.yParam = null; }
+            editingGate.id = null;
             markGatePercentDirty();
-            refreshFileList(); refreshParamOptions(); render();
+            refreshFileList(); refreshParamOptions(); rebuildGateTree();
+            ui.xParam.dispatchEvent(new Event('change'));
+            ui.yParam.dispatchEvent(new Event('change'));
         }
     };
 
@@ -1345,6 +1406,7 @@ function refreshFileList(){
     ui.fileList.append(row);
   });
   updateCompensationStatus();
+  syncToolAvailability();
 }
 
 // Drag and Drop
@@ -1469,13 +1531,13 @@ function refreshParamOptions(){
   fillSel(ui.xParam); 
   fillSel(ui.yParam);
 
-  if (!axis.xParam && opts.length) {
+  if (!opts.includes(axis.xParam) && opts.length) {
     const defaultX = opts.find(p => p.toUpperCase().includes('FSC-A')) || opts[0];
     ui.xParam.value = defaultX;
     axis.xParam = defaultX;
   }
-  if (!axis.yParam && opts.length > 1) {
-    const defaultY = opts.find(p => p.toUpperCase().includes('SSC-A')) || opts[1];
+  if (!opts.includes(axis.yParam) && opts.length) {
+    const defaultY = opts.find(p => p.toUpperCase().includes('SSC-A')) || opts[1] || opts[0];
     ui.yParam.value = defaultY;
     axis.yParam = defaultY;
   }
@@ -1674,8 +1736,8 @@ function autoRangesFromData(){
 function saveAxisToCache(param, isX) {
     if(!param) return;
     paramSettings[param] = {
-        min: isX ? ui.xMin.value : ui.yMin.value,
-        max: isX ? ui.xMax.value : ui.yMax.value,
+        min: Number(isX ? ui.xMin.value : ui.yMin.value),
+        max: Number(isX ? ui.xMax.value : ui.yMax.value),
         scale: isX ? ui.xScale.value : ui.yScale.value
     };
 }
@@ -1883,7 +1945,9 @@ function drawAxes(targetCtx = ctx, area = plotArea(targetCtx.canvas.width, targe
       targetCtx.beginPath(); targetCtx.moveTo(tx, y+h); targetCtx.lineTo(tx, y+h+4);
       targetCtx.strokeStyle = getComputedStyle(document.body).getPropertyValue('--tick-stroke');
       targetCtx.stroke();
-      targetCtx.fillText(formatCanvasTick(v, axis.xScale), tx, y+h+16);
+      const label = formatCanvasTick(v, axis.xScale);
+      const labelX = Math.min(tx, x + w - targetCtx.measureText(label).width / 2);
+      targetCtx.fillText(label, labelX, y+h+16);
     });
   }
 
@@ -3478,6 +3542,12 @@ window.addEventListener('keydown', (e)=>{
     closeCompensationModal();
     return;
   }
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === 'Escape') {
+    closeAxisPopover(); closeGateApplyMenu(); closePlotStyleMenu();
+    [ui.workspaceMenu, ui.exportMenu].forEach(menu => menu.classList.remove('open'));
+    [ui.workspaceMenuButton, ui.exportMenuButton].forEach(button => button.setAttribute('aria-expanded', 'false'));
+  }
   const active = document.activeElement;
   if (!active) return;
   if (active.tagName === 'INPUT' || active.tagName === 'SELECT' || active.tagName === 'TEXTAREA' || active.isContentEditable) return;
@@ -4027,9 +4097,9 @@ ui.exportMenu.addEventListener('click', () => {
 
 // Exports
 ui.exportPNG.addEventListener('click', safeHandler('Open PNG export', () => {
-    ui.pngExportModal.classList.add('visible');
+    openModal(ui.pngExportModal);
 }));
-ui.cancelPngExport.addEventListener('click', safeHandler('Close PNG export', () => ui.pngExportModal.classList.remove('visible')));
+ui.cancelPngExport.addEventListener('click', safeHandler('Close PNG export', () => closeModal(ui.pngExportModal)));
 ui.confirmPngExport.addEventListener('click', safeHandler('PNG export', () => {
     const scale = Math.max(1, Math.min(10, +ui.pngScale.value || 1));
     const logicalWidth = plotLogicalWidth();
@@ -4039,6 +4109,9 @@ ui.confirmPngExport.addEventListener('click', safeHandler('PNG export', () => {
     canvas.height = logicalHeight * scale;
     const tCtx = canvas.getContext('2d');
     tCtx.scale(scale, scale);
+    // CSS canvas backgrounds are not included in downloaded PNGs.
+    tCtx.fillStyle = getComputedStyle(document.body).getPropertyValue('--canvas-bg').trim();
+    tCtx.fillRect(0, 0, logicalWidth, logicalHeight);
     
     // We pass logical dimensions to render so it draws relatively correct to 900x600 but on a larger canvas
     render(tCtx, true, { 
@@ -4054,7 +4127,7 @@ ui.confirmPngExport.addEventListener('click', safeHandler('PNG export', () => {
     a.href = url;
     a.download = 'plot.png';
     a.click();
-    ui.pngExportModal.classList.remove('visible');
+    closeModal(ui.pngExportModal);
 }));
 
 ui.openPdfModal.addEventListener('click', safeHandler('Open PDF export', () => {
@@ -4063,10 +4136,11 @@ ui.openPdfModal.addEventListener('click', safeHandler('Open PDF export', () => {
     ui.pdfXLabel.value = labels.x;
     ui.pdfYLabel.value = labels.y;
     ui.pdfDarkBackground.checked = document.body.dataset.theme !== 'light';
-    ui.pdfExportModal.classList.add('visible');
+    openModal(ui.pdfExportModal);
 }));
-ui.cancelPdfExport.addEventListener('click', safeHandler('Close PDF export', () => ui.pdfExportModal.classList.remove('visible')));
+ui.cancelPdfExport.addEventListener('click', safeHandler('Close PDF export', () => closeModal(ui.pdfExportModal)));
 ui.confirmPdfExport.addEventListener('click', safeHandler('PDF export', () => {
+    if (!ui.pdfWidth.reportValidity() || !ui.pdfHeight.reportValidity()) return;
     const cmToPt = 28.3465;
     pdfLabelCache.set(pdfAxisLabelKey(), {x: ui.pdfXLabel.value, y: ui.pdfYLabel.value});
     const exportOptions = {
@@ -4080,8 +4154,7 @@ ui.confirmPdfExport.addEventListener('click', safeHandler('PDF export', () => {
         xLabel: ui.pdfXLabel.value,
         yLabel: ui.pdfYLabel.value,
     };
-    exportPDF(exportOptions);
-    ui.pdfExportModal.classList.remove('visible');
+    if (exportPDF(exportOptions)) closeModal(ui.pdfExportModal);
 }));
 
 function pdfAxisLabelKey() {
@@ -4108,7 +4181,7 @@ function pdfThemeColor(role, isLightMode) {
 function exportPDF(options){
   try {
     const { jsPDF } = window.jspdf || {};
-    if (!jsPDF) { alert('jsPDF not loaded (offline). Use PNG export instead.'); return; }
+    if (!jsPDF) { alert('The PDF library could not load. Reload the page or use PNG export.'); return; }
     const pdf = new jsPDF({ orientation: options.width > options.height ? 'landscape' : 'portrait', unit: 'pt', format: [options.width, options.height] });
     const exportPad = { l: 92, r: 22, t: 20, b: 82 };
     const area = { x: exportPad.l, y: exportPad.t, w: options.width - exportPad.l - exportPad.r, h: options.height - exportPad.t - exportPad.b };
@@ -4150,6 +4223,7 @@ function exportPDF(options){
     if (is2d) drawVerticalWrappedLabel(pdf, yLines, yLabelXScatter, cy);
     if (isHist) drawVerticalWrappedLabel(pdf, yLines, yLabelXHist, cy);
     pdf.save('plot.pdf');
+    return true;
   } catch (err) { alert('Vector PDF export failed: ' + err.message); console.error(err); }
 }
 
@@ -4564,20 +4638,31 @@ function drawGatesPDF(pdf, area, isLightMode, options = {}) {
     });
 }
 
-ui.exportCSV.addEventListener('click', ()=>{
-  const rows = [];
-  rows.push(['sample', ...(samples[0]?.params||[])].map(csvEscape).join(','));
+function populationCSV() {
+  const selectedSamples = visibleSamples();
+  const params = Array.from(new Set(selectedSamples.flatMap(s => s.params)));
+  const rows = [['sample', ...params].map(csvEscape).join(',')];
   const filt = makePopulationFilter(currentPopulationId);
-  visibleSamples().forEach(s=>{
-    const n=s.n; 
-    for(let k=0;k<n;k++){ 
-      if(!filt(s,k)) continue; 
-      const vals=s.params.map((p,pi)=> s.data[pi][k]); 
-      rows.push([s.name, ...vals].map(csvEscape).join(','));
+  selectedSamples.forEach(s => {
+    const indices = params.map(p => s.params.indexOf(p));
+    for (let i = 0; i < s.n; i++) {
+      if (!filt(s, i)) continue;
+      const values = indices.map(pi => pi < 0 || !Number.isFinite(s.data[pi][i]) ? '' : s.data[pi][i]);
+      rows.push([s.name, ...values].map(csvEscape).join(','));
     }
   });
-  const blob = new Blob([rows.join('\r\n')],{type:'text/csv'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='population.csv'; a.click(); URL.revokeObjectURL(url);
-});
+  return rows.join('\r\n');
+}
+
+function downloadFile(contents, type, filename) {
+  const url = URL.createObjectURL(new Blob([contents], {type}));
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+ui.exportCSV.addEventListener('click', safeHandler('Population export', () => {
+  downloadFile(populationCSV(), 'text/csv;charset=utf-8', 'population.csv');
+}));
 
 const STATS_EXPORT_METRICS = [
     {id: 'events', label: 'Events', header: 'events'},
@@ -4626,7 +4711,7 @@ function openStatsExportModal() {
     ]);
     populateCheckboxList(ui.statsParamOptions, params.map(p => ({value: p, label: p})));
     populateCheckboxList(ui.statsMetricOptions, STATS_EXPORT_METRICS.map(m => ({value: m.id, label: m.label})));
-    ui.statsExportModal.classList.add('visible');
+    openModal(ui.statsExportModal);
 }
 
 function exportStatsCSV(gateIds, paramNames, metricIds) {
@@ -4689,7 +4774,7 @@ function exportStatsCSV(gateIds, paramNames, metricIds) {
 ui.exportStats.addEventListener('click', openStatsExportModal);
 ui.statsSelectAll.addEventListener('click', () => setStatsExportChecks(true));
 ui.statsSelectNone.addEventListener('click', () => setStatsExportChecks(false));
-ui.cancelStatsExport.addEventListener('click', () => ui.statsExportModal.classList.remove('visible'));
+ui.cancelStatsExport.addEventListener('click', () => closeModal(ui.statsExportModal));
 ui.confirmStatsExport.addEventListener('click', () => {
     const gateIds = checkedValues(ui.statsGateOptions);
     const paramNames = checkedValues(ui.statsParamOptions);
@@ -4697,50 +4782,129 @@ ui.confirmStatsExport.addEventListener('click', () => {
     if (!gateIds.length) { alert('Choose at least one gate to export.'); return; }
     if (!metricIds.length) { alert('Choose at least one statistic to export.'); return; }
     exportStatsCSV(gateIds, paramNames, metricIds);
-    ui.statsExportModal.classList.remove('visible');
+    closeModal(ui.statsExportModal);
 });
 
-ui.saveWorkspace.addEventListener('click', () => {
-    const workspace = {
-        samples: samples.map(s => {
-            const { rawData, compensationApplied, ...storedSample } = s;
-            const sourceData = rawData || s.data;
-            return {...storedSample, data: Array.from(sourceData, d => Array.from(d))};
-        }),
-        gates, axis, visibleSampleIds: Array.from(visibleSampleIds), currentPopulationId, gridCols: ui.gridCols.value, plotStyle,
-        compensation: compensationState,
-    };
-    const blob = new Blob([JSON.stringify(workspace, null, 2)], {type: 'application/json'});
-    const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'workspace.json'; a.click(); URL.revokeObjectURL(url);
-});
+function serializeWorkspace() {
+  return {
+    version: 2,
+    samples: samples.map(s => {
+      const { rawData, compensationApplied, ...storedSample } = s;
+      return {...storedSample, data: Array.from(rawData || s.data, d => Array.from(d))};
+    }),
+    gates, axis, visibleSampleIds: Array.from(visibleSampleIds), currentPopulationId,
+    plotType: ui.plotType.value, gridCols: ui.gridCols.value, plotStyle,
+    paramSettings, theme: document.body.dataset.theme, compensation: compensationState,
+  };
+}
 
+// Validate and prepare everything before replacing the current session.
+function prepareWorkspace(workspace) {
+  const fail = message => { throw new Error(message); };
+  const finite = Number.isFinite;
+  const validNames = names => Array.isArray(names) && names.every(n => typeof n === 'string' && n.trim()) && new Set(names).size === names.length;
+  if (!workspace || !Array.isArray(workspace.samples) || !Array.isArray(workspace.gates) || !workspace.axis) fail('This is not a Cytofeather workspace.');
+  if (workspace.version != null && ![1, 2].includes(workspace.version)) fail('This workspace version is not supported.');
+  const nextSamples = workspace.samples.map(s => {
+    if (!s || typeof s.id !== 'string' || !s.id || typeof s.name !== 'string' || !validNames(s.params) || !s.params.length || !Number.isSafeInteger(s.n) || s.n < 1 || !Array.isArray(s.data) || s.data.length !== s.params.length) fail('Invalid sample metadata.');
+    if (s.data.some(d => !Array.isArray(d) || d.length !== s.n || d.some(v => v !== null && !finite(v)))) fail('Invalid sample event data.');
+    const data = s.data.map(d => Float64Array.from(d, v => v === null ? NaN : v));
+    if (s.paramDetectors && (!Array.isArray(s.paramDetectors) || s.paramDetectors.length !== s.params.length || s.paramDetectors.some(n => typeof n !== 'string'))) fail('Invalid detector metadata.');
+    return {...s, color: /^#[0-9a-f]{6}$/i.test(s.color) ? s.color : palette[0], data, rawData: data};
+  });
+  const sampleIds = new Set(nextSamples.map(s => s.id));
+  if (sampleIds.size !== nextSamples.length) fail('Duplicate sample IDs.');
+  const nextAxis = {...workspace.axis};
+  for (const dim of ['x', 'y']) {
+    if (!['linear', 'log'].includes(nextAxis[dim + 'Scale'])) fail('Invalid axis scale.');
+    if (nextSamples.length && !nextSamples.some(s => s.params.includes(nextAxis[dim + 'Param']))) fail('An axis references a missing parameter.');
+    const min = nextAxis[dim + 'Min'], max = nextAxis[dim + 'Max'];
+    if (nextSamples.length && (!finite(min) || !finite(max) || min >= max || (nextAxis[dim + 'Scale'] === 'log' && min <= 0))) fail('Invalid axis range.');
+  }
+  const nextGates = workspace.gates.map(g => {
+    if (!g || typeof g.id !== 'string' || !g.id || typeof g.name !== 'string' || !g.def || !['rect', 'segment', 'range', 'ellipse', 'circle', 'poly'].includes(g.type)) fail('Invalid gate definition.');
+    const gate = {...g, def: {...g.def}, parentId: g.parentId || null, xScale: g.xScale || nextAxis.xScale, yScale: g.yScale || nextAxis.yScale};
+    if (!['linear', 'log'].includes(gate.xScale) || !['linear', 'log'].includes(gate.yScale)) fail('Invalid gate scale.');
+    if (typeof gate.xParam !== 'string' || (!isSegmentGate(gate) && typeof gate.yParam !== 'string')) fail('Invalid gate parameters.');
+    const keys = {rect: ['x0','y0','x1','y1'], segment: ['x0','x1'], range: ['x0','x1'], ellipse: ['cx','cy','rx','ry'], circle: ['cx','cy','r']}[g.type];
+    if (keys && keys.some(k => !finite(g.def[k]))) fail('Invalid gate coordinates.');
+    if (g.type === 'poly' && (!Array.isArray(g.def.pts) || g.def.pts.length < 3 || g.def.pts.some(p => !p || !finite(p.x) || !finite(p.y)))) fail('Invalid polygon.');
+    if (g.type === 'ellipse' && (!(g.def.rx > 0) || !(g.def.ry > 0) || (g.def.angle != null && !finite(g.def.angle)))) fail('Invalid ellipse.');
+    if (g.type === 'circle' && !(g.def.r > 0)) fail('Invalid circle.');
+    if (g.sampleId && !sampleIds.has(g.sampleId)) fail('A gate references a missing sample.');
+    if (g.excludeSampleIds && (!Array.isArray(g.excludeSampleIds) || g.excludeSampleIds.some(id => !sampleIds.has(id)))) fail('Invalid gate sample exclusions.');
+    return normalizeGate(gate);
+  });
+  const gateMap = new Map(nextGates.map(g => [g.id, g]));
+  if (gateMap.size !== nextGates.length) fail('Duplicate gate IDs.');
+  for (const gate of nextGates) {
+    const visited = new Set();
+    let current = gate;
+    while (current) {
+      if (visited.has(current.id)) fail('The gate hierarchy contains a cycle.');
+      visited.add(current.id);
+      if (current.parentId && !gateMap.has(current.parentId)) fail('A gate references a missing parent.');
+      current = gateMap.get(current.parentId);
+    }
+  }
+  if (!Array.isArray(workspace.visibleSampleIds) || workspace.visibleSampleIds.some(id => !sampleIds.has(id))) fail('Invalid visible sample list.');
+  if (workspace.currentPopulationId && !gateMap.has(workspace.currentPopulationId)) fail('The selected population is missing.');
+  const savedCompensation = workspace.compensation;
+  if (savedCompensation && (!validNames(savedCompensation.channels) || !Array.isArray(savedCompensation.matrix) || savedCompensation.matrix.length !== savedCompensation.channels.length || savedCompensation.matrix.some(row => !Array.isArray(row) || row.length !== savedCompensation.channels.length || row.some(v => !finite(v))))) fail('Invalid compensation matrix.');
+  const nextCompensation = normalizeCompensationState(savedCompensation);
+  if (nextCompensation.enabled && nextCompensation.channels.length < 2) fail('Compensation requires at least two channels.');
+  const operator = nextCompensation.enabled ? compensationOperator(nextCompensation) : null;
+  nextSamples.forEach(s => applyCompensationToSample(s, nextCompensation, operator));
+  const nextPlotType = workspace.plotType || 'scatter';
+  if (!['scatter', 'scatter-grid', 'hist', 'hist-offset'].includes(nextPlotType)) fail('Invalid plot type.');
+  const settings = Object.create(null);
+  for (const [key, value] of Object.entries(workspace.paramSettings || {})) {
+    if (value && typeof value.min === 'string' && value.min.trim()) value.min = Number(value.min);
+    if (value && typeof value.max === 'string' && value.max.trim()) value.max = Number(value.max);
+    if (!value || !['linear','log'].includes(value.scale) || !finite(value.min) || !finite(value.max) || value.min >= value.max || (value.scale === 'log' && value.min <= 0)) fail('Invalid saved parameter range.');
+    settings[key] = {...value};
+  }
+  return {...workspace, samples: nextSamples, gates: nextGates, axis: nextAxis, compensation: nextCompensation, plotType: nextPlotType, paramSettings: settings};
+}
+
+function restoreWorkspace(workspace) {
+  const next = prepareWorkspace(workspace);
+  samples = next.samples; gates = next.gates; axis = next.axis;
+  visibleSampleIds = new Set(next.visibleSampleIds); currentPopulationId = next.currentPopulationId || null;
+  compensationState = next.compensation;
+  Object.keys(paramSettings).forEach(key => delete paramSettings[key]);
+  Object.assign(paramSettings, next.paramSettings);
+  pdfLabelCache.clear();
+  plotStyle = {...DEFAULT_PLOT_STYLE, ...next.plotStyle};
+  ui.plotType.value = next.plotType;
+  ui.gridCols.value = ['auto', '1', '2', '3', '4', '5', '6'].includes(String(next.gridCols)) ? String(next.gridCols) : 'auto';
+  if (['light', 'dark'].includes(next.theme)) {
+    document.body.dataset.theme = next.theme;
+    ui.themeToggle.checked = next.theme === 'light';
+    document.querySelector('meta[name="theme-color"]').content = next.theme === 'light' ? '#f1f3f6' : '#0f1115';
+  }
+  editingGate = {id: null, handle: null};
+  // Set controls before anything can render and read them back into axis.
+  ui.xScale.value = axis.xScale; ui.yScale.value = axis.yScale;
+  ui.xMin.value = axis.xMin ?? ''; ui.xMax.value = axis.xMax ?? '';
+  ui.yMin.value = axis.yMin ?? ''; ui.yMax.value = axis.yMax ?? '';
+  refreshParamOptions();
+  ui.xParam.value = axis.xParam || ''; ui.yParam.value = axis.yParam || '';
+  markGatePercentDirty();
+  refreshFileList(); rebuildGateTree(); syncToolAvailability();
+  closeAxisPopover(); closePlotStyleMenu(); closeGateApplyMenu();
+  resetToSelect();
+}
+
+ui.saveWorkspace.addEventListener('click', safeHandler('Save workspace', () => {
+  downloadFile(JSON.stringify(serializeWorkspace()), 'application/json', 'workspace.json');
+}));
 ui.loadWorkspace.addEventListener('click', () => ui.loadWorkspaceInput.click());
-ui.loadWorkspaceInput.addEventListener('change', (e) => {
-    const file = e.target.files[0]; if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (event) => {
-        try {
-            const workspace = JSON.parse(event.target.result);
-            samples = workspace.samples.map(s => {
-                const data = s.data.map(d => Float32Array.from(d));
-                return {...s, data, rawData: data};
-            });
-            gates = workspace.gates; axis = workspace.axis;
-            gates.forEach(normalizeGate);
-            visibleSampleIds = new Set(workspace.visibleSampleIds); currentPopulationId = workspace.currentPopulationId;
-            if (workspace.plotStyle) plotStyle = {...plotStyle, ...workspace.plotStyle};
-            compensationState = normalizeCompensationState(workspace.compensation);
-            applyCompensationState(compensationState, { refresh: false });
-            markGatePercentDirty();
-            refreshFileList(); refreshParamOptions(); rebuildGateTree();
-            ui.xParam.value = axis.xParam; ui.yParam.value = axis.yParam; ui.xScale.value = axis.xScale; ui.yScale.value = axis.yScale;
-            ui.xMin.value = axis.xMin; ui.xMax.value = axis.xMax; ui.yMin.value = axis.yMin; ui.yMax.value = axis.yMax;
-            if (workspace.gridCols) ui.gridCols.value = workspace.gridCols;
-            syncToolAvailability();
-            render();
-        } catch (err) { alert('Failed to load workspace file.'); console.error(err); }
-    };
-    reader.readAsText(file); e.target.value = '';
+ui.loadWorkspaceInput.addEventListener('change', async (e) => {
+  const file = e.target.files[0]; if (!file) return;
+  e.target.value = '';
+  try { restoreWorkspace(JSON.parse(await file.text())); }
+  catch (err) { alert(`Failed to load workspace: ${err.message.replace(/[.]+$/, '')}. Your current session has been kept.`); console.error(err); }
 });
 
 // ---------------------------- Parsers & Helpers ----------------------------
@@ -4808,38 +4972,83 @@ function smoothHistogramBins(bins, sigma = 1.25) {
     return out;
 }
 
-async function parseCSV(buffer, name){
-  const txt = new TextDecoder('utf-8').decode(buffer);
-  const lines = txt.split(/\r?\n/).filter(Boolean);
-  const header = lines[0].split(',');
-  const cols = header.length;
-  const arrays = Array.from({length:cols}, ()=>[]);
-  for(let i=1;i<lines.length;i++){
-    const parts = lines[i].split(','); if(parts.length!==cols) continue;
-    for(let c=0;c<cols;c++) arrays[c].push(parseFloat(parts[c]));
+function parseCSVRows(text) {
+  const rows = []; let row = [], field = '', quoted = false, closed = false;
+  const endField = () => { row.push(field); field = ''; closed = false; };
+  const endRow = () => { endField(); if (row.some(value => value.trim())) rows.push(row); row = []; };
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (quoted) {
+      if (char === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (char === '"') { quoted = false; closed = true; }
+      else field += char;
+    } else if (char === ',') endField();
+    else if (char === '\r' || char === '\n') { if (char === '\r' && text[i + 1] === '\n') i++; endRow(); }
+    else if (char === '"' && !field && !closed) quoted = true;
+    else if (char === '"' || (closed && char.trim())) throw new Error('Invalid CSV quoting.');
+    else if (!closed) field += char;
   }
-  return { name, params: header, paramDetectors: header.slice(), paramStains: header.map(() => ''), data: arrays.map(a=> Float32Array.from(a)), n: arrays[0].length };
+  if (quoted) throw new Error('Unclosed quoted field in CSV.');
+  if (field || row.length || closed) endRow();
+  return rows;
+}
+
+async function parseCSV(buffer, name) {
+  const rows = parseCSVRows(new TextDecoder('utf-8').decode(buffer));
+  if (rows.length < 2) throw new Error('CSV needs a header and at least one event.');
+  const header = rows.shift().map(value => value.trim());
+  if (header.some(value => !value) || new Set(header).size !== header.length) throw new Error('CSV parameter names must be nonempty and unique.');
+  rows.forEach((row, i) => { if (row.length !== header.length) throw new Error(`CSV record ${i + 2} has ${row.length} fields; expected ${header.length}.`); });
+  const number = value => {
+    const text = value.trim();
+    return /^[+-]?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?$/.test(text) ? Number(text) : NaN;
+  };
+  const indices = header.map((_, i) => i).filter(i => rows.some(row => Number.isFinite(number(row[i]))));
+  if (!indices.length) throw new Error('CSV contains no numeric parameters.');
+  // Text-only annotation columns are ignored; mixed numeric/text columns are errors.
+  for (const i of indices) for (const row of rows) {
+    if (row[i].trim() && !Number.isFinite(number(row[i]))) throw new Error(`Non-numeric value in parameter "${header[i]}".`);
+  }
+  const params = indices.map(i => header[i]);
+  return {name, params, paramDetectors: params.slice(), paramStains: params.map(() => ''), data: indices.map(i => Float64Array.from(rows, row => number(row[i]))), n: rows.length};
+}
+
+function uniqueParameterNames(names, detectors) {
+  const counts = new Map(); names.forEach(name => counts.set(name, (counts.get(name) || 0) + 1));
+  const used = new Set();
+  return names.map((name, i) => {
+    const base = counts.get(name) > 1 ? `${name} [${detectors[i]}]` : name;
+    let unique = base, suffix = 2;
+    while (used.has(unique)) unique = `${base} (${suffix++})`;
+    used.add(unique); return unique;
+  });
 }
 
 async function parseFCS(buffer, name){
   const ascii = (off,len)=> new TextDecoder('ascii').decode(new Uint8Array(buffer, off, len));
+  if (buffer.byteLength < 58) throw new Error('FCS header is missing or truncated.');
   const head = ascii(0,6);
   if(!head.startsWith('FCS')) throw new Error('Not an FCS file');
   const hTextStart = parseInt(ascii(10,8).trim());
   const hTextEnd   = parseInt(ascii(18,8).trim());
   const hDataStart = parseInt(ascii(26,8).trim());
   const hDataEnd   = parseInt(ascii(34,8).trim());
+  if (!Number.isSafeInteger(hTextStart) || !Number.isSafeInteger(hTextEnd) || hTextStart < 58 || hTextEnd < hTextStart || hTextEnd >= buffer.byteLength) throw new Error('Invalid FCS TEXT offsets.');
   const text = ascii(hTextStart, hTextEnd - hTextStart + 1);
   const meta = parseText(text); 
   const par = +meta["$PAR"];
   const tot = +meta["$TOT"];
+  if (!Number.isSafeInteger(par) || par < 1 || !Number.isSafeInteger(tot) || tot < 1) throw new Error("Invalid FCS parameter or event count.");
   const dtype = (meta["$DATATYPE"] || "F").trim().toUpperCase();
   const mode = (meta["$MODE"] || "L").trim().toUpperCase();
   const byteord = (meta["$BYTEORD"] || "4,3,2,1").trim();
-  const little = byteord === '1,2,3,4';
-  const dStart = meta["$BEGINDATA"] ? parseInt(meta["$BEGINDATA"]) : hDataStart;
-  const dEnd = meta["$ENDDATA"] ? parseInt(meta["$ENDDATA"]) : hDataEnd;
-  if(!(Number.isFinite(dStart) && Number.isFinite(dEnd) && dEnd > dStart)) { throw new Error("Invalid data offsets"); }
+  const order = byteord.replace(/\s/g, '');
+  if (!['1,2', '2,1', '1,2,3,4', '4,3,2,1', '1,2,3,4,5,6,7,8', '8,7,6,5,4,3,2,1'].includes(order)) throw new Error('Unsupported FCS byte order: ' + byteord);
+  const little = order.startsWith('1,2');
+  if (mode !== 'L') throw new Error('Only list-mode FCS data ($MODE=L) is supported.');
+  const dStart = hDataStart > 0 ? hDataStart : Number(meta["$BEGINDATA"]);
+  const dEnd = hDataEnd > 0 ? hDataEnd : Number(meta["$ENDDATA"]);
+  if(!(Number.isSafeInteger(dStart) && Number.isSafeInteger(dEnd) && dStart > hTextEnd && dEnd >= dStart && dEnd < buffer.byteLength)) { throw new Error("Invalid data offsets"); }
   const params = [];
   const paramDetectors = [];
   const paramStains = [];
@@ -4851,12 +5060,15 @@ async function parseFCS(buffer, name){
     params.push(stain || detector);
   }
   const view = new DataView(buffer, dStart, dEnd - dStart + 1);
-  const arrays = Array.from({length:par}, ()=> new Float32Array(tot));
   const bytesPer = [];
   if (dtype === "F") for(let i=0;i<par;i++) bytesPer.push(4);
   else if (dtype === "D") for(let i=0;i<par;i++) bytesPer.push(8);
-  else if (dtype === "I") for(let i=1;i<=par;i++) bytesPer.push(parseInt(meta[`$P${i}B`] || "16") / 8);
+  else if (dtype === "I") for(let i=1;i<=par;i++) bytesPer.push(Number(meta[`$P${i}B`]) / 8);
   else throw new Error("Unsupported $DATATYPE " + dtype);
+  if (bytesPer.some(b => !Number.isInteger(b) || b < 1 || b > 8)) throw new Error('Only byte-aligned FCS parameters up to 64 bits are supported.');
+  const bytesPerEvent = bytesPer.reduce((a,b)=>a+b,0);
+  if (!Number.isSafeInteger(bytesPerEvent * tot) || bytesPerEvent * tot > view.byteLength) throw new Error('FCS event data is truncated.');
+  const arrays = Array.from({length:par}, ()=> new Float64Array(tot));
   function readVal(off, p){
     const b = bytesPer[p];
     if (dtype === "F") return view.getFloat32(off, little);
@@ -4864,13 +5076,13 @@ async function parseFCS(buffer, name){
     if (b === 1)  return view.getUint8(off);
     if (b === 2) return view.getUint16(off, little);
     if (b === 4) return view.getUint32(off, little);
-    if (b === 8) return Number(view.getBigUint64(off, little));
+
     let v = 0;
-    if (little) for (let k=b-1;k>=0;k--) v = (v<<8) | view.getUint8(off+k);
-    else for (let k=0;k<b;k++) v = (v<<8) | view.getUint8(off+k);
+    if (little) for (let k=b-1;k>=0;k--) v = v * 256 + view.getUint8(off+k);
+    else for (let k=0;k<b;k++) v = v * 256 + view.getUint8(off+k);
+    if (!Number.isSafeInteger(v)) throw new Error('FCS integer exceeds supported exact numeric precision.');
     return v;
   }
-  const bytesPerEvent = bytesPer.reduce((a,b)=>a+b,0);
   if (mode === "L"){
     let off = 0;
     for (let i=0;i<tot;i++){
@@ -4878,15 +5090,8 @@ async function parseFCS(buffer, name){
       for (let p=0;p<par;p++){ arrays[p][i] = readVal(pOff, p); pOff += bytesPer[p]; }
       off += bytesPerEvent;
     }
-  } else if (mode === "C"){
-    let base = 0;
-    for (let p=0;p<par;p++){
-      let off = base, step = bytesPer[p];
-      for (let i=0;i<tot;i++){ arrays[p][i] = readVal(off, p); off += step; }
-      base += step * tot;
-    }
-  } else { throw new Error("Unsupported $MODE " + mode); }
-  return { name, params, paramDetectors, paramStains, data: arrays, n: tot };
+  }
+  return { name, params: uniqueParameterNames(params, paramDetectors), paramDetectors, paramStains, data: arrays, n: tot };
 }
 
 function parseText(txt){
@@ -4919,6 +5124,7 @@ function hexToRgb(hex) {
 
 setAxisFromUI();
 refreshFileList();
+refreshPopulationOptions();
 rebuildGateTree();
 updateCompensationStatus();
 try {

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 64 64">
+  <!-- Generator: Adobe Illustrator 30.8.1, SVG Export Plug-In . SVG Version: 2.1.4 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st1 {
+        fill: #a7c8fc;
+      }
+
+      .st2 {
+        fill: #8ae9d5;
+      }
+
+      .st3 {
+        fill: #c3b5ff;
+      }
+
+      .st4 {
+        stroke: #edf7ff;
+        stroke-opacity: .1;
+      }
+
+      .st4, .st5, .st6, .st7 {
+        fill: none;
+      }
+
+      .st8 {
+        fill: url(#linear-gradient);
+      }
+
+      .st5 {
+        stroke: #212c3b;
+      }
+
+      .st5, .st6, .st7 {
+        stroke-linecap: round;
+      }
+
+      .st5, .st7 {
+        stroke-width: 2px;
+      }
+
+      .st6 {
+        stroke: url(#linear-gradient2);
+        stroke-width: 2.8px;
+      }
+
+      .st7 {
+        stroke: #182333;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="9.04" y1="61.69" x2="56.04" y2=".69" gradientTransform="translate(0 63.89) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#243549"/>
+      <stop offset="1" stop-color="#101722"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="14.57" y1="23.22" x2="43.57" y2="52.22" gradientTransform="translate(0 63.89) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8ae9d5"/>
+      <stop offset=".52" stop-color="#8ccef5"/>
+      <stop offset="1" stop-color="#c3b5ff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient2" x1="8.68" y1="15.01" x2="37.68" y2="49.01" gradientTransform="translate(0 63.89) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#80ddca"/>
+      <stop offset="1" stop-color="#f1f7ff"/>
+    </linearGradient>
+  </defs>
+  <rect class="st8" x="1" y="1" width="62" height="62" rx="18" ry="18"/>
+  <rect class="st4" x="1.5" y="1.5" width="61" height="61" rx="17.5" ry="17.5"/>
+  <path class="st0" d="M13.9,42c-3-10.5,5.5-27.5,29-33,3,14-9.37,32.28-23.8,33.5-2.51.21-5.2-.5-5.2-.5Z"/>
+  <circle class="st2" cx="39.4" cy="42.5" r="3.2"/>
+  <circle class="st1" cx="46.9" cy="35" r="2.1"/>
+  <circle class="st3" cx="46.9" cy="49.5" r="1.5"/>
+  <path class="st7" d="M23.45,37.61s2.56.53,7.24-.55c1.97-.45,5.93-2.79,5.93-2.79"/>
+  <path class="st6" d="M9.9,49.5c7.5-14,17.5-26,28-33.5"/>
+  <path class="st7" d="M38.67,16"/>
+  <path class="st7" d="M16.1,43.78"/>
+  <path class="st7" d="M33.13,25.77s3.06-.1,6.42-1.51c1.47-.62,4.1-1.91,4.1-1.91"/>
+  <path class="st5" d="M20.41,26.24c-.61-1.45-1.36-3.37-.45-6.74"/>
+</svg>

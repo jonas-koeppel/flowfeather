@@ -1,0 +1,88 @@
+{
+  "version": 2,
+  "samples": [
+    {
+      "id": "s1",
+      "name": "Round-trip control",
+      "params": [
+        "X",
+        "Y"
+      ],
+      "paramDetectors": [
+        "X",
+        "Y"
+      ],
+      "data": [
+        [
+          110,
+          70,
+          110
+        ],
+        [
+          70,
+          110,
+          110
+        ]
+      ],
+      "n": 3,
+      "color": "#7aa2ff"
+    }
+  ],
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Saved gate",
+      "type": "rect",
+      "parentId": null,
+      "xParam": "X",
+      "yParam": "Y",
+      "def": {
+        "x0": 0,
+        "y0": 0,
+        "x1": 200,
+        "y1": 200
+      }
+    }
+  ],
+  "axis": {
+    "xParam": "X",
+    "yParam": "Y",
+    "xScale": "linear",
+    "yScale": "linear",
+    "xMin": 0,
+    "xMax": 200,
+    "yMin": 0,
+    "yMax": 200
+  },
+  "visibleSampleIds": [
+    "s1"
+  ],
+  "currentPopulationId": "G1",
+  "plotType": "hist-offset",
+  "theme": "dark",
+  "gridCols": "2",
+  "paramSettings": {
+    "X": {
+      "min": "0",
+      "max": "200",
+      "scale": "linear"
+    }
+  },
+  "compensation": {
+    "enabled": true,
+    "channels": [
+      "X",
+      "Y"
+    ],
+    "matrix": [
+      [
+        100,
+        20
+      ],
+      [
+        20,
+        100
+      ]
+    ]
+  }
+}
